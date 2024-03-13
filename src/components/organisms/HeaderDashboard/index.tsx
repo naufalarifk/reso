@@ -1,3 +1,5 @@
+import { Button } from "@/components"
+
 export const HeaderDashboard = () => {
 
     const styles = {
@@ -9,7 +11,7 @@ export const HeaderDashboard = () => {
     return (
         <nav style={styles} className="py-6 px-8 flex justify-between">
             <img height={48} width={148} src="/reso.png" />
-            <button></button>
+            <Button className="bg-transparent rounded-full">Connect Wallet</Button>
         </nav>
     )
 }

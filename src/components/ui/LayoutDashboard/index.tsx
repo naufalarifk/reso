@@ -6,7 +6,7 @@ export const LayoutDashboard = () => {
         <>
             <HeaderDashboard
             />
-            <div className="flex overflow-hidden pt-20">
+            <div className="flex overflow-hidden pt-4 p-4">
                 <SidebarDashboard
                 />
                 <section className="relative h-full w-full overflow-y-auto lg:ml-64">
