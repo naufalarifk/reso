@@ -6,11 +6,11 @@ export const LayoutDashboard = () => {
         <>
             <HeaderDashboard
             />
-            <div className="flex overflow-hidden pt-4 p-4">
+            <div className="flex overflow-hidden pt-4 p-4 h-full">
                 <SidebarDashboard
                 />
-                <section className="relative h-full w-full overflow-y-auto lg:ml-64">
-                    <div className="p-4">
+                <section className="relative h-full w-full overflow-y-auto">
+                    <div className="ml-4 h-full">
                         <Outlet />
                     </div>
                 </section>
