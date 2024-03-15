@@ -1,5 +1,5 @@
 import { IcArrowBottom, IcArrowTop, IcSwapHorizontal, IcWarning } from "@/assets/icons";
-import { Button, Input, Text } from "@/components"
+import { Button, Input, Text, Toggle } from "@/components"
 import { Slider } from "@/components/atoms/Slider";
 import { SwapComponent } from "@/components/molecules/SwapComponent";
 import { Dispatch, SetStateAction, useState } from "react"
@@ -21,6 +21,7 @@ export const TradeComponent = ({ isActive, setIsActive }: TradeComponentProps) =
 
     const [leverage, setLeverage] = useState(0)
     const [selectedMenu, setSelectedMenu] = useState('Market')
+    const [toggleLeverage, setToggleLeverage] = useState(false)
     const menu = ['Market', 'Limit', 'TP/SL']
 
     console.log('isActive', isActive)
@@ -60,11 +61,16 @@ export const TradeComponent = ({ isActive, setIsActive }: TradeComponentProps) =
                 </svg>
                 <Text className="text-[#9F9F9F]">1 BTC = 0.001293 USDT ($000.321)</Text>
             </div>
-            <div>
-                <Text>Leverage Slider</Text>
-                <div className="flex items-center">
+            <div className="space-y-2">
+                <div className="flex justify-between">
+                    <Text className="text-[#9F9F9F]">Leverage Slider</Text>
+                    <Toggle label="" checked={toggleLeverage} onChange={setToggleLeverage} />
+                </div>
+                <div className="flex items-center space-x-2">
                     <Slider step={0.1} value={leverage} onChange={e => setLeverage(e)} min={0} max={100} />
-                    <Input />
+                    <Input style={{
+                        background: `var(--COLOR-COLOR, linear-gradient(236deg, rgba(93, 99, 111, 0.10) 1.26%, rgba(25, 30, 40, 0.35) 100%))`
+                    }} className="p-2 w-2/5" value={leverage} onChange={e => setLeverage(Number(e.target.value))} />
                 </div>
             </div>
         </section>
