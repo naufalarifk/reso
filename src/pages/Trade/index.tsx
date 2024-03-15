@@ -1,10 +1,13 @@
 import { IcBitcoin, IcDropdown } from "@/assets/icons"
 import { Text } from "@/components"
+import { TradeComponent } from "@/components/organisms"
 import TradingView from "@/components/organisms/TradingView"
 import { useState } from "react"
 export const Trade = () => {
 
-    const [selectedMenu, setSelectedMenu] = useState('')
+    type Trades = 'Long' | 'Short' | 'Swap'
+    const [selectedMenu, setSelectedMenu] = useState('Position')
+    const [activeTrade, setActiveTrade] = useState<Trades>('Long')
 
     const styles = {
         borderRadius: `4px`,
@@ -14,6 +17,7 @@ export const Trade = () => {
     }
 
     const menu = ['Position', 'Orders', 'Trades', 'Claims']
+
 
 
     return (
@@ -50,28 +54,28 @@ export const Trade = () => {
                     <Text className="text-white font-semibold">30.479.24</Text>
                 </div>
             </div>
-            <section>
-                <div style={styles} className="h-[60vh] mt-4">
-                    <TradingView />
-                </div>
-                <div style={styles} className="h-1/5 mt-4 p-6">
-                    <div className="flex justify-between">
-                        <div className="flex space-x-4">
-                            {
-                                menu.map(menu =>
-                                    <Text className={`${selectedMenu === menu ? 'text-white border-b-2 border-amber-400' : ''} cursor-pointer`} onClick={() => setSelectedMenu(menu)}>{menu}</Text>)
-                            }
-                        </div>
-                        <div className="flex space-x-1 items-center">
-                            <input type="checkbox" name="hide market" placeholder="Hide other market" id="" />
-                            <Text>Hide other market</Text>
-                        </div>
+            <section className="flex">
+                <section className="w-2/3">
+                    <div style={styles} className="h-[60vh] mt-4">
+                        <TradingView />
                     </div>
-                    <Text className="text-center mt-5">No Options</Text>
-                </div>
-            </section>
-            <section>
-
+                    <div style={styles} className="h-1/5 mt-4 p-6">
+                        <div className="flex justify-between">
+                            <div className="flex space-x-4">
+                                {
+                                    menu.map(menu =>
+                                        <Text className={`${selectedMenu === menu ? 'text-white border-b-2 border-amber-400' : ''} cursor-pointer`} onClick={() => setSelectedMenu(menu)}>{menu}</Text>)
+                                }
+                            </div>
+                            <div className="flex space-x-1 items-center">
+                                <input type="checkbox" name="hide market" placeholder="Hide other market" id="" />
+                                <Text>Hide other market</Text>
+                            </div>
+                        </div>
+                        <Text className="text-center mt-5">No Options</Text>
+                    </div>
+                </section>
+                <TradeComponent setIsActive={setActiveTrade} isActive={activeTrade} />
             </section>
         </>
     )
