@@ -1,5 +1,5 @@
-import { SidebarDashboard, HeaderDashboard } from "@/components/organisms"
-import { Outlet } from "react-router-dom"
+import { SidebarDashboard, HeaderDashboard } from "@/components/organisms";
+import { Outlet } from "react-router-dom";
 
 export const LayoutDashboard = () => {
     return (
