@@ -3,17 +3,18 @@
 import { useState } from "react";
 import { ButtonGlow } from "@/components";
 import { AnimatePresence, motion } from "framer-motion";
+import { NavLink } from "react-router-dom";
 
 const navLink = [
   {
     id: 1,
-    name: "Integrations",
-    setTo: "/",
+    name: "Trade",
+    setTo: "/trade",
   },
   {
     id: 2,
-    name: "Pricing",
-    setTo: "/",
+    name: "Staking",
+    setTo: "/staking",
   },
   {
     id: 3,
@@ -103,13 +104,13 @@ export const Header = () => {
                   {navLink &&
                     navLink.map((item, i) => (
                       <li key={i}>
-                        <div
-                          // to={item.setTo}
+                        <NavLink
+                          to={item.setTo}
                           className="block cursor-pointer p-5 py-2 text-white"
                           onClick={() => setToggle(false)}
                         >
                           {item.name}
-                        </div>
+                        </NavLink>
                       </li>
                     ))}
                 </ul>
@@ -126,10 +127,18 @@ export const Header = () => {
 
           <div className="hidden md:flex md:items-center md:justify-center gap-9">
             <ul className="flex gap-5 text-base text-white">
-              <div>Integrations</div>
-              <div>Pricing</div>
-              <div>Docs</div>
-              <div>Changelog</div>
+              {navLink &&
+                navLink.map((item, i) => (
+                  <li key={i}>
+                    <NavLink
+                      to={item.setTo}
+                      // className="block cursor-pointer p-5 py-2 text-white"
+                      onClick={() => setToggle(false)}
+                    >
+                      {item.name}
+                    </NavLink>
+                  </li>
+                ))}
             </ul>
             <ButtonGlow>Connect Wallet</ButtonGlow>
           </div>
