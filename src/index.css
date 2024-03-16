@@ -18,3 +18,110 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+@layer base {
+  body {
+    @apply bg-[#040102];
+  }
+
+  .layout {
+    /* 1100px */
+    max-width: 78.75rem;
+    @apply mx-auto w-11/12;
+  }
+
+  .border-animate-wrapper {
+    @apply relative overflow-hidden bg-[#2F292B];
+  }
+
+  .border-animate-wrapper:before {
+    background: conic-gradient(
+      rgb(255, 255, 255) 0deg,
+      rgba(254, 159, 0, 1) 0deg,
+      transparent 100deg
+    );
+
+    @apply absolute left-[-20%] top-[-20%] h-[150%] w-[150%] animate-border-spin content-[''];
+  }
+
+  .border-animate-content {
+    @apply absolute left-[2px] top-[2px] right-[2px] bottom-[2px];
+  }
+
+  .gradient_1 {
+    position: absolute;
+    top: 1%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 46% 54% 70% 30% / 30% 51% 49% 70%;
+    filter: blur(100px);
+    background: #fe9f0066;
+    background: linear-gradient(45deg, #fea10097, #fe9f0066);
+  }
+
+  #tsparticlessnow,
+  #tsparticlessnowSecond {
+    height: 600px;
+  }
+
+  .gradient_border {
+    background: rgb(254, 159, 0);
+    background: radial-gradient(
+      circle,
+      rgba(254, 159, 0, 1) 0%,
+      rgba(0, 212, 255, 0) 29%
+    );
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#fe9f00",endColorstr="#00d4ff",GradientType=1);
+  }
+
+  .gradient_2 {
+    position: absolute;
+    top: -10%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 46% 54% 70% 30% / 30% 51% 49% 70%;
+    filter: blur(100px);
+    background: #fea10049;
+    background: linear-gradient(45deg, #fe9d009e, #fe9f0066);
+  }
+
+  .gradient_3 {
+    position: absolute;
+    bottom: -60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 46% 54% 70% 30% / 30% 51% 49% 70%;
+    filter: blur(100px);
+    background: #fea10049;
+    background: linear-gradient(45deg, #fe9d009e, #fe9f0066);
+  }
+
+  .animation-ping {
+    animation: scaleSquare 2s ease-in infinite;
+  }
+
+  .bar {
+    animation: heightChange 0.5s infinite alternate;
+  }
+
+  @keyframes heightChange {
+    0% {
+      height: var(--height); /* Start at the specified height */
+    }
+    100% {
+      height: calc(var(--height) + 40px); /* Increase height by 20px */
+    }
+  }
+
+  @keyframes scaleSquare {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.3);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+}
