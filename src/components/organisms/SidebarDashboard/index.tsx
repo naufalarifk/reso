@@ -11,7 +11,7 @@ export const SidebarDashboard = () => {
     backdropFilter: `blur(12px)`,
   };
 
-  const handleIcon = (name: string, active: boolean) => {
+  const handleIcon = (name: string) => {
     switch (name) {
       case navigationDashboardName.TRADE:
         return (
@@ -52,9 +52,9 @@ export const SidebarDashboard = () => {
           {navigationDashboard.map((nav) => (
             <>
               <NavLink to={nav.route}>
-                {({ isActive }) => (
+                {() => (
                   <div className="mr-16 px-4 py-5 flex items-center space-x-2">
-                    {handleIcon(nav.name.toLowerCase(), isActive)}
+                    {handleIcon(nav.name.toLowerCase())}
                     <Text variant={"heading2"} className="text-white">
                       {nav.name}
                     </Text>
