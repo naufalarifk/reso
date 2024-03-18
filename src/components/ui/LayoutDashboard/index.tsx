@@ -1,15 +1,10 @@
-import { Header } from "@/components";
-import { SidebarDashboard } from "@/components/organisms";
+import { HeaderDashboard, SidebarDashboard } from "@/components/organisms";
 import { Outlet } from "react-router-dom";
 
 export const LayoutDashboard = () => {
   return (
     <>
-      {/* <HeaderDashboard
-            />
-            <div className=""> */}
-      <Header />
-      {/* </div> */}
+      <HeaderDashboard />
       <div className="flex overflow-hidden pt-4 p-4 h-auto  mt-20">
         <SidebarDashboard />
         <section className="relative h-full w-full overflow-y-auto no-scrollbar">
