@@ -1,6 +1,6 @@
+import { Fragment } from "react";
 import { Button } from "@/components";
 import { Dialog, Transition } from "@headlessui/react";
-import React, { Fragment } from "react";
 
 interface ModalUnstakedProps {
   isOpen: boolean;
