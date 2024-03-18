@@ -42,7 +42,7 @@ export const TradeComponent = ({ isActive, setIsActive }: TradeComponentProps) =
     const leverageCount = [0.1, 1, 2, 5, 10, 50, 100]
 
     return (
-        <section style={styles} className="mt-4 ml-4 w-1/3 p-4 space-y-4">
+        <section style={styles} className="mt-4 lg:ml-4 w-full lg:w-1/3 p-4 space-y-4">
             <div style={styles} className="flex w-full rounded-lg border border-">
                 <Button className={`${isActive === 'Long' ? 'bg-[#FE9F001A]' : 'bg-transparent'} w-1/3 rounded-l-[4px] rounded-r-none`} onClick={() => setIsActive('Long')}>
                     <IcArrowTop color={isActive === 'Long' ? '#FE9F00' : '#9F9F9F'} />
@@ -87,7 +87,7 @@ export const TradeComponent = ({ isActive, setIsActive }: TradeComponentProps) =
                         background: `var(--COLOR-COLOR, linear-gradient(236deg, rgba(93, 99, 111, 0.10) 1.26%, rgba(25, 30, 40, 0.35) 100%))`
                     }} className="p-2 w-2/5" value={leverage} placeholder={leverage.toString()} onChange={handleChangeInputSlider} />
                 </div>
-                <div className="flex space-x-2 justify-around">
+                <div className="flex space-x-1 lg:space-x-2 justify-around">
                     {
                         leverageCount.map((value) =>
                             <Button style={buttonStyles} className="h-8 text-xs" onClick={() => setLeverage(value)}>
