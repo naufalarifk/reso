@@ -53,7 +53,7 @@ export const SidebarDashboard = () => {
   return (
     <aside
       style={styles}
-      className="transition-width fixed left-4 w-64 top-[6rem] hidden z-20 h-full gap-y-3 lg:flex flex-col"
+      className="transition-width fixed left-4 top-[6rem] w-60 z-20 h-full gap-y-3 hidden lg:flex flex-col no-scrollbar"
     >
       <div className="flex h-full min-h-0 flex-1 flex-col justify-between gap-10 p-4">
         <div className="overflow-y-scroll flex flex-col space-y-2">
