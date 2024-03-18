@@ -8,7 +8,7 @@ export const HeaderDashboard = () => {
   return (
     <nav
       style={styles}
-      className="h-[80px] z-[9999] fixed top-0 w-full px-8 flex items-center justify-between"
+      className="h-[80px] z-[9999] fixed top-0 w-full px-8 items-center justify-between hidden lg:flex"
     >
       <img className="h-6" src="/reso.png" />
       <div className="border-animate-wrapper cursor-pointer rounded-full lg:w-[200px] lg:min-w--[150px] lg:min-h-[48px] w-full h-[50px]">
