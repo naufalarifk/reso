@@ -10,7 +10,7 @@ export const LayoutDashboard = () => {
       <Header />
       <div className="flex overflow-hidden pt-4 p-4 h-auto  mt-20">
         <SidebarDashboard />
-        <section className="relative h-full w-full overflow-y-auto no-scrollbar">
+        <section className="relative h-full w-full no-scrollbar">
           <div className="lg:ml-64 h-full">
             <Outlet />
           </div>
