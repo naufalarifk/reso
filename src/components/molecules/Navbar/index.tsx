@@ -5,6 +5,7 @@ import { ButtonGlow } from "@/components";
 import { AnimatePresence, motion } from "framer-motion";
 import { NavLink } from "react-router-dom";
 import { useWeb3Modal } from '@web3modal/wagmi/react'
+import { TokenList } from "../TokenList";
 
 const navLink = [
   {
@@ -33,6 +34,7 @@ export const Header = () => {
   // const lastScrollTop = useRef(0);
 
   const [toggle, setToggle] = useState(false);
+  const [openTokenList, setOpenTokenList] = useState(false)
   const { open } = useWeb3Modal()
 
   // const [isNavbarVisible, setIsNavbarVisible] = useState(true);
@@ -139,10 +141,12 @@ export const Header = () => {
                   </li>
                 ))}
             </ul>
+            <div onClick={() => setOpenTokenList(!openTokenList)}>test</div>
             <ButtonGlow onClick={() => open()}>Connect Wallet</ButtonGlow>
           </div>
         </div>
       </div>
+      <TokenList isOpen={openTokenList} closeModal={() => setOpenTokenList(false)} />
     </div>
   );
 };

@@ -1,4 +1,4 @@
-export const ButtonGlow = ({ children, onClick }: { children: string, onClick: () => void }) => {
+export const ButtonGlow = ({ children, onClick }: { children: string, onClick?: () => void }) => {
   return (
     <>
       <div onClick={onClick} className="cursor-pointer border-animate-wrapper rounded-full w-[150px] min-w--[150px] min-h-[48px]">
