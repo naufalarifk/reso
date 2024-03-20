@@ -1,17 +1,12 @@
-import { useSearchParams, useLocation } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 
 import { Button, ModalUnstake, Text } from "@/components";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 export const CreateStakingPage = () => {
   const [searchParams] = useSearchParams();
-  const { pathname } = useLocation();
 
   const [open, setOpen] = useState(false);
-
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [pathname]);
 
   const isMultiple = searchParams.get("type");
 

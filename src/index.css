@@ -119,6 +119,15 @@
     background: linear-gradient(45deg, #fe9d009e, #fe9f0066);
   }
 
+  .gradient_terms {
+    position: absolute;
+
+    border-radius: 46% 54% 70% 30% / 30% 51% 49% 70%;
+    filter: blur(100px);
+    background: #fe9f0066;
+    background: linear-gradient(45deg, #fea10097, #fe9f0066);
+  }
+
   .animation-ping {
     animation: scaleSquare 2s ease-in infinite;
   }
