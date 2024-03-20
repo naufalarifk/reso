@@ -4,7 +4,7 @@ import { useState } from "react";
 import { ButtonGlow } from "@/components";
 import { AnimatePresence, motion } from "framer-motion";
 import { NavLink } from "react-router-dom";
-import { useWeb3Modal } from '@web3modal/wagmi/react'
+import { useWeb3Modal } from "@web3modal/wagmi/react";
 
 const navLink = [
   {
@@ -19,13 +19,13 @@ const navLink = [
   },
   {
     id: 3,
-    name: "Docs",
-    setTo: "/",
+    name: "Terms and Conditions",
+    setTo: "/terms",
   },
   {
     id: 4,
-    name: "Change Log",
-    setTo: "/",
+    name: "Privacy Policy",
+    setTo: "/privacy",
   },
 ];
 
@@ -33,7 +33,7 @@ export const Header = () => {
   // const lastScrollTop = useRef(0);
 
   const [toggle, setToggle] = useState(false);
-  const { open } = useWeb3Modal()
+  const { open } = useWeb3Modal();
 
   // const [isNavbarVisible, setIsNavbarVisible] = useState(true);
 
@@ -71,19 +71,22 @@ export const Header = () => {
           <button
             type="button"
             onClick={() => setToggle(!toggle)}
-            className="z-[999] flex h-[40px] w-[40px] cursor-pointer items-center justify-center rounded-md bg-primary text-lg hover:bg-yellow md:hidden"
+            className="z-[999] flex h-[40px] w-[40px] cursor-pointer items-center justify-center rounded-md bg-primary text-lg hover:bg-primary md:hidden"
           >
             <span
-              className={`absolute h-[2px] w-[20px] transform rounded bg-white transition  ${toggle ? "translate-y-0 rotate-45" : "-translate-y-2"
-                }`}
+              className={`absolute h-[2px] w-[20px] transform rounded bg-white transition  ${
+                toggle ? "translate-y-0 rotate-45" : "-translate-y-2"
+              }`}
             />
             <span
-              className={`h-[2px] w-[20px] transform rounded bg-white transition  absolute${toggle ? "translate-x-3 opacity-0" : "opacity-100"
-                }`}
+              className={`h-[2px] w-[20px] transform rounded bg-white transition  absolute${
+                toggle ? "translate-x-3 opacity-0" : "opacity-100"
+              }`}
             />
             <span
-              className={`absolute h-[2px] w-[20px] transform rounded bg-white transition  ${toggle ? "translate-y-0 -rotate-45" : "translate-y-2"
-                }`}
+              className={`absolute h-[2px] w-[20px] transform rounded bg-white transition  ${
+                toggle ? "translate-y-0 -rotate-45" : "translate-y-2"
+              }`}
             />
           </button>
           <AnimatePresence>
@@ -105,7 +108,9 @@ export const Header = () => {
                       <li key={i}>
                         <NavLink
                           to={item.setTo}
-                          className="block cursor-pointer p-5 py-2 text-white"
+                          className={({ isActive }) =>
+                            isActive ? "text-primary" : "text-white"
+                          }
                           onClick={() => setToggle(false)}
                         >
                           {item.name}
@@ -124,14 +129,16 @@ export const Header = () => {
             )}
           </AnimatePresence>
 
-          <div className="hidden md:flex md:items-center md:justify-center gap-9">
-            <ul className="flex gap-5 text-base text-white">
+          <div className="hidden md:flex md:items-center md:justify-center gap-10">
+            <ul className="flex gap-10 text-base  cursor-pointer">
               {navLink &&
                 navLink.map((item, i) => (
                   <li key={i}>
                     <NavLink
                       to={item.setTo}
-                      // className="block cursor-pointer p-5 py-2 text-white"
+                      className={({ isActive }) =>
+                        isActive ? "text-primary" : "text-white"
+                      }
                       onClick={() => setToggle(false)}
                     >
                       {item.name}
