@@ -2,7 +2,7 @@ import { Outlet } from "react-router-dom";
 
 export const MainMenu = () => {
   return (
-    <div className="relative w-[100vw] h-[100vh]">
+    <div className="relative w-[100vw] h-[100vh] overflow-x-hidden">
       <svg
         className="absolute -top-40 -left-[500px]"
         xmlns="http://www.w3.org/2000/svg"
