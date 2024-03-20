@@ -76,18 +76,18 @@ export const TradeComponent = ({ isActive, setIsActive }: TradeComponentProps) =
             </div>
             <SwapComponent />
             {
-                isActive === 'Swap' && <div style={inputStyles} className="rounded-lg flex p-4 justify-between">
+                isActive === 'Swap' && selectedMenu === 'Limit' && <div style={inputStyles} className="rounded-lg flex p-4 justify-between">
                     <div>
-                        <Text className="text-white">Receive</Text>
+                        <Text className="text-white">Price</Text>
                         <Input className="bg-transparent" placeholder="0.00" />
                     </div>
                     <div>
                         <Text className="text-white">Mark: 0.00</Text>
                         <div className="flex items-center space-x-1">
-                            <IcBitcoin />
-                            <Text className="text-white">BTC</Text>
-                            <div className="p-1 rounded-full bg-[#9c8a8f]">
-                                <IcDropdown />
+                            <IcBitcoin height="16" width="16" />
+                            <Text className="text-white font-semibold text-lg">BTC</Text>
+                            <div className="p-[2px] rounded-full bg-gray-800">
+                                <IcDropdown height='16' width='16' />
                             </div>
                         </div>
                     </div>
@@ -105,17 +105,19 @@ export const TradeComponent = ({ isActive, setIsActive }: TradeComponentProps) =
                 {
                     isActive !== 'Swap' &&
                     <>
-                        <div className="flex justify-between">
-                            <Text className="text-[#9F9F9F]">Leverage Slider</Text>
-                            <Toggle label="" checked={toggleLeverage} onChange={setToggleLeverage} />
+                        <div style={styles} className="p-4 space-y-2">
+                            <div className="flex justify-between">
+                                <Text className="text-[#9F9F9F]">Leverage Slider</Text>
+                                <Toggle label="" checked={toggleLeverage} onChange={setToggleLeverage} />
+                            </div>
+                            <div className="flex items-center space-x-2">
+                                <Slider step={0.1} value={leverage} onChange={e => setLeverage(e)} min={0} max={100} />
+                                <Input style={{
+                                    background: `var(--COLOR-COLOR, linear-gradient(236deg, rgba(93, 99, 111, 0.10) 1.26%, rgba(25, 30, 40, 0.35) 100%))`
+                                }} className="p-2 w-2/5" value={leverage} placeholder={leverage.toString()} onChange={handleChangeInputSlider} />
+                            </div>
                         </div>
-                        <div className="flex items-center space-x-2">
-                            <Slider step={0.1} value={leverage} onChange={e => setLeverage(e)} min={0} max={100} />
-                            <Input style={{
-                                background: `var(--COLOR-COLOR, linear-gradient(236deg, rgba(93, 99, 111, 0.10) 1.26%, rgba(25, 30, 40, 0.35) 100%))`
-                            }} className="p-2 w-2/5" value={leverage} placeholder={leverage.toString()} onChange={handleChangeInputSlider} />
-                        </div>
-                        <div className="flex space-x-1 lg:space-x-2 justify-around">
+                        <div className="flex space-x-1 lg:space-x-1 justify-between">
                             {
                                 leverageCount.map((value) =>
                                     <Button style={buttonStyles} className="h-8 text-xs" onClick={() => setLeverage(value)}>

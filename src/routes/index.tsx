@@ -1,5 +1,5 @@
 import { Route, Routes } from "react-router-dom";
-import { CreateStakingPage, Landing, Staking, Trade, Bridge } from "@/pages";
+import { CreateStakingPage, Landing, Staking, Trade, Bridge, Swap } from "@/pages";
 import { MainMenu } from "./MainMenu";
 import { LayoutDashboard } from "@/components";
 
@@ -13,6 +13,7 @@ export const RootLayout = () => {
           <Route path="/staking" element={<Staking />} />
           <Route path="/staking/create" element={<CreateStakingPage />} />
           <Route path="/bridge" element={<Bridge />} />
+          <Route path="/swap" element={<Swap />} />
         </Route>
       </Route>
     </Routes>
