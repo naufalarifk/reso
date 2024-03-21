@@ -22,7 +22,24 @@ export const TokenList = ({ isOpen, closeModal }: TokenListProps) => {
             name: "Ethereum",
             symbol: "ETH",
             image: "/images/placeholder.svg",
-        }
+        },
+        {
+            name: "Wrapped Ethereum",
+            symbol: "WETH",
+            image: "/images/placeholder.svg",
+        }, {
+            name: "Bitcoin",
+            symbol: "BTC",
+            image: "/images/placeholder.svg",
+        }, {
+            name: "Wrapped SOL",
+            symbol: "SOL",
+            image: "/images/placeholder.svg",
+        }, {
+            name: "Arbitrarum",
+            symbol: "ARB",
+            image: "/images/placeholder.svg",
+        },
     ]
 
 

@@ -56,6 +56,53 @@ const FirstStep = ({ setStep, step }: ChildrenProps) => {
 }
 
 
+const SecondStep = ({ setStep, step }: ChildrenProps) => {
+    const styles = {
+        borderBottom: `0.5px solid rgba(255, 255, 255, 0.20)`,
+        background: `var(--COLOR-COLOR, linear-gradient(236deg, rgba(93, 99, 111, 0.10) 1.26%, rgba(25, 30, 40, 0.35) 100%))`,
+        backdropFilter: `blur(12px)`,
+    };
+
+    const handleNextStep = () => {
+        if (step === 4) {
+            setStep(1)
+        } else {
+            setStep(step + 1)
+        }
+    }
+
+    return (
+        <section className="bg-[#5D636F1A] mx-auto p-6 border-[0.5px] border-[#FFFFFF1A] w-full lg:w-3/4 min-w-sm rounded-xl bg-card-background from-[rgba(93,99,111,0.1)] to-[rgba(25,30,40,0.5)] space-y-4">
+            <Text className="font-semibold text-lg">Bridge Token</Text>
+            <Text className="text-[#9F9F9F]">Send your assets across chains</Text>
+            <div className="mt-6 space-y-2">
+                <Text className="text-[#9F9F9F]">Select Source Token</Text>
+                <BridgeInput val="0.000823" />
+                <div className="p-1 rounded-full z-10">
+                    <div className="bg-[#34312f] rounded-full mx-auto border-4 border-[#282729] w-10 h-10 grid place-items-center">
+                        <IcSwapHorizontal height="24" width="24" color="#FE9F00" />
+                    </div>
+                </div>
+                <Text className="text-[#9F9F9F]">Select Source Token</Text>
+                <BridgeInput val="0.000823" />
+            </div>
+            <div className="bg-[#5D636F1A] p-4 border-[0.5px] border-[#FFFFFF1A] w-full min-w-sm rounded-xl bg-card-background from-[rgba(93,99,111,0.1)] to-[hsla(220,23%,13%,1)]">
+                <div className="flex justify-between items-center">
+                    <Text className="text-[#9F9F9F]">Minimum Received : </Text>
+                    <Text>0.000823</Text>
+                </div>
+                <div className="flex justify-between items-center">
+                    <Text className="text-[#9F9F9F]">Network fees : </Text>
+                    <Text>0.000823</Text>
+                </div>
+            </div>
+            <Input value='bc1q3j69cnwn79nh009rwkywknmncfde98v54uwu49' disabled placeholder="Enter your wallet address" style={styles} className="p-2" />
+            <Button onClick={handleNextStep} className="w-full bg-[#FE9F00]">Bridge</Button>
+        </section>
+    )
+}
+
+
 const ThirdStep = ({ setStep, step }: ChildrenProps) => {
     const styles = {
         borderBottom: `0.5px solid rgba(255, 255, 255, 0.20)`,
@@ -165,7 +212,7 @@ export const Bridge = () => {
     return (
         <main className="mx-auto w-[86vw] lg:w-[60vw] space-y-4">
             <Text className="font-semibold text-center text-xl lg:text-4xl">
-                0xSD DEX Cross-Chain <span className="text-[#FE9F00]">Bridge</span>
+                RESO DEX Cross-Chain <span className="text-[#FE9F00]">Bridge</span>
             </Text>
             <Text className="text-center text-sm lg:text-lg text-[#9F9F9F]">Bridge between BTC, ETH, BCH, XAI and 100+ other cryptocurrencies. <br /> The best exchange rates, using your wallet address.</Text>
             <BridgeSteps active={step} />
@@ -174,7 +221,7 @@ export const Bridge = () => {
                 step === 1 ?
                     <FirstStep step={step} setStep={setStep} /> :
                     step === 2 ?
-                        <FirstStep step={step} setStep={setStep} /> :
+                        <SecondStep step={step} setStep={setStep} /> :
                         step === 3 ?
                             <ThirdStep step={step} setStep={setStep} />
 
