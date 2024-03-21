@@ -1,3 +1,4 @@
+import { cn } from "@/utils";
 import type { ReactNode, FC } from "react";
 import { useEffect, useMemo, useRef, useState } from "react";
 
@@ -9,9 +10,15 @@ export interface TabsData {
 type TabsProps = {
   items: TabsData[];
   isBetween?: boolean;
+  classNameWrapper?: string;
+  classNameButtons?: string;
 };
 
-export const Tabs: FC<TabsProps> = ({ items, isBetween = false }) => {
+export const Tabs: FC<TabsProps> = ({
+  items,
+  isBetween = false,
+  classNameWrapper,
+}) => {
   const [activeTabIndex, setActiveTabIndex] = useState(0);
   const [tabUnderlineWidth, setTabUnderlineWidth] = useState(0);
   const [tabUnderlineLeft, setTabUnderlineLeft] = useState(0);
@@ -40,12 +47,17 @@ export const Tabs: FC<TabsProps> = ({ items, isBetween = false }) => {
     setActiveTabIndex(index);
   };
   return (
-    <div>
-      <div className="relative">
+    <>
+      <div className="bg-card-background relative from-[#5D636F1A] p-4 md:py-4 md:px-8 to-[#191E2859] border-soft/15 rounded border-[0.5px]">
         <div
-          className={`flex ${
-            isBetween ? "items-center justify-between" : "gap-4"
-          } rounded-lg  p-1 px-1`}
+          className={
+            (cn(
+              `flex ${
+                isBetween ? "items-center justify-between" : "gap-4"
+              } rounded-lg  p-1 px-1`
+            ),
+            classNameWrapper)
+          }
         >
           {items.map((tab, idx) => (
             <button
@@ -71,10 +83,10 @@ export const Tabs: FC<TabsProps> = ({ items, isBetween = false }) => {
         />
       </div>
       {typeof contents === "string" ? (
-        <div className="mt-10">{contents}</div>
+        <div className="mt-4">{contents}</div>
       ) : (
         contents
       )}
-    </div>
+    </>
   );
 };
