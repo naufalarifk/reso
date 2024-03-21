@@ -40,23 +40,6 @@ export const HeaderDashboard = () => {
 
   // const [isNavbarVisible, setIsNavbarVisible] = useState(true);
 
-  // useEffect(() => {
-  //   window.addEventListener(
-  //     "scroll",
-  //     () => {
-  //       const { scrollY } = window;
-  //       if (scrollY > lastScrollTop.current) {
-  //         setIsNavbarVisible(false);
-  //       } else if (scrollY < lastScrollTop.current) {
-  //         setIsNavbarVisible(true);
-  //       }
-  //       lastScrollTop.current = scrollY <= 0 ? 0 : scrollY;
-  //     },
-  //     { passive: true }
-  //   );
-  // }, []);
-
-
   const handleConnectWallet = useCallback(() => {
     open();
     setIsLoggedIn(true);

@@ -16,6 +16,12 @@ export default {
         soft: "#9F9F9F",
         darkSoft: "#6B6B6B",
       },
+      fontFamily: {
+        dm: ["DM Sans", "sans-serif"],
+      },
+      fontSize: {
+        xxs: "10px",
+      },
       keyframes: {
         shimmer: {
           "100%": {

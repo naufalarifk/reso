@@ -6,7 +6,7 @@ import Marquee from "react-fast-marquee";
 import { loadSlim } from "@tsparticles/slim";
 
 import { useEffect, useMemo, useRef, useState } from "react";
-import { ButtonGlow, Header } from "@/components";
+import { ButtonGlow, Footer, Header } from "@/components";
 
 export function Landing() {
   const data = [90, 20, 50, 100, 70];
@@ -184,7 +184,7 @@ export function Landing() {
               All-in-One Platform for Decentralized Exchange, Staking, and
               Streamlined Bridging, Unlocking Limitless Possibilities
             </p>
-            <ButtonGlow>Connect Wallet</ButtonGlow>
+            <ButtonGlow onClick={() => ""}>Connect Wallet</ButtonGlow>
           </motion.div>
           <div
             style={{
@@ -228,7 +228,7 @@ export function Landing() {
                   </Marquee>
                 </div>
                 <div className="overflow-hidden">
-                  <Marquee speed={150} direction="right">
+                  <Marquee speed={250} direction="right">
                     <img
                       className="md:h-10 xl:h-14"
                       src="/images/slider1.png"
@@ -592,7 +592,7 @@ export function Landing() {
                 </div>
               </div>
               <div className="mt-5">
-                <ButtonGlow>Try Now</ButtonGlow>
+                <ButtonGlow onClick={() => ""}>Try Now</ButtonGlow>
               </div>
             </div>
             <div
@@ -709,7 +709,7 @@ export function Landing() {
               </div>
 
               <div className="mt-5">
-                <ButtonGlow>Try Now</ButtonGlow>
+                <ButtonGlow onClick={() => ""}>Try Now</ButtonGlow>
               </div>
             </div>
           </motion.div>
@@ -863,42 +863,44 @@ export function Landing() {
                 </defs>
               </svg>
             </div>
-            <motion.div
-              initial={{
-                y: 50,
-                opacity: 0,
-              }}
-              whileInView={{
-                y: 0,
-                opacity: 1,
-                transition: {
-                  y: {
-                    duration: 1,
+            <div className="h-full w-full p-6 lg:p-0 bg-black flex items-center justify-center flex-col">
+              <motion.div
+                initial={{
+                  y: 50,
+                  opacity: 0,
+                }}
+                whileInView={{
+                  y: 0,
+                  opacity: 1,
+                  transition: {
+                    y: {
+                      duration: 1,
+                    },
+                    opacity: {
+                      duration: 2,
+                    },
                   },
-                  opacity: {
-                    duration: 2,
-                  },
-                },
-              }}
-              viewport={{
-                once: true,
-              }}
-              className="h-full w-full p-6 lg:p-0 bg-black flex items-center justify-center flex-col"
-            >
-              <div className="text-white mb-4 text-center text-2xl lg:text-4xl font-semibold">
-                Connect to what you{" "}
-                <span className="text-primary">actually need</span>
-              </div>
-              <div className="lg:text-lg text-sm font-light text-center text-darkSoft mb-10">
-                Through our advanced AI technology, we empower developers with
-                the ability to think fast, produce more efficient code
-              </div>
-              <div className="border-animate-wrapper cursor-pointer rounded-full lg:w-[450px] lg:min-w--[150px] lg:min-h-[48px] w-full h-[50px]">
-                <div className="border-animate-content text-white bg-black rounded-full flex items-center justify-center">
-                  Try Now
+                }}
+                viewport={{
+                  once: true,
+                }}
+                className="flex items-center justify-center flex-col"
+              >
+                <div className="text-white mb-4 text-center text-2xl lg:text-4xl font-semibold">
+                  Connect to what you{" "}
+                  <span className="text-primary">actually need</span>
                 </div>
-              </div>
-            </motion.div>
+                <div className="lg:text-lg text-sm font-light text-center text-darkSoft mb-10">
+                  Through our advanced AI technology, we empower developers with
+                  the ability to think fast, produce more efficient code
+                </div>
+                <div className="border-animate-wrapper cursor-pointer rounded-full lg:w-[450px] lg:min-w--[150px] lg:min-h-[48px] w-full h-[50px]">
+                  <div className="border-animate-content text-white bg-black rounded-full flex items-center justify-center">
+                    Try Now
+                  </div>
+                </div>
+              </motion.div>
+            </div>
             <div className="absolute lg:-bottom-14 -bottom-4 -left-6   lg:-left-20">
               <svg
                 className="lg:w-[220px] lg:h-[221px] w-20 h-20"
@@ -941,126 +943,7 @@ export function Landing() {
         </div>
       </div>
 
-      <footer className="py-10 bg-black">
-        <div className="layout">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
-            <div className="col-span-full  lg:col-span-1 lg:block">
-              <div>
-                <img src="/images/brand.png" className="w-max h-7" alt="" />
-                <div className="text-darkSoft mt-7 text-sm ">
-                  We ara a lorem ipsum dolor sit amet, consectetur adipiscing
-                  elit, sed do eiusmod tempor incididunt ut labore et dolore
-                  magna aliqua. Ut enim ad minim veniam, quis nostrud
-                  exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                  consequat.
-                </div>
-              </div>
-            </div>
-            <div className="col-span-full   lg:col-span-1 lg:block">
-              <div className="grid grid-cols-3 gap-8">
-                <div>
-                  <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">
-                    About
-                  </h2>
-                  <ul className="text-darkSoft font-medium space-y-4">
-                    <li>
-                      <a href="#" className="hover:underlin text-sm font-light">
-                        About Us
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#" className="hover:underlin text-sm font-light">
-                        Blog
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#" className="hover:underlin text-sm font-light">
-                        Careers
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#" className="hover:underlin text-sm font-light">
-                        Jobs
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#" className="hover:underlin text-sm font-light">
-                        In Press
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-                <div>
-                  <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">
-                    Support
-                  </h2>
-                  <ul className="text-darkSoft font-medium space-y-4">
-                    <li>
-                      <a href="#" className="hover:underlin text-sm font-light">
-                        Contact us
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#" className="hover:underlin text-sm font-light">
-                        Online Chat
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#" className="hover:underlin text-sm font-light">
-                        Whatsapp
-                      </a>
-                    </li>
-
-                    <li>
-                      <a href="#" className="hover:underlin text-sm font-light">
-                        Telegram
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#" className="hover:underlin text-sm font-light">
-                        Ticketing
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-                <div>
-                  <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">
-                    FAQ
-                  </h2>
-                  <ul className="text-darkSoft font-medium space-y-4">
-                    <li>
-                      <a href="#" className="hover:underlin text-sm font-light">
-                        Contact us
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#" className="hover:underlin text-sm font-light">
-                        Online Chat
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#" className="hover:underlin text-sm font-light">
-                        Whatsapp
-                      </a>
-                    </li>
-
-                    <li>
-                      <a href="#" className="hover:underlin text-sm font-light">
-                        Telegram
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#" className="hover:underlin text-sm font-light">
-                        Ticketing
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }

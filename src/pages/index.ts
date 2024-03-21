@@ -4,4 +4,6 @@ export * from "./Landing";
 export * from "./Staking";
 export * from "./CreateStaking";
 export * from "./Bridge";
-export * from "./Swap"
+export * from "./Swap";
+export * from "./Terms";
+export * from "./Privacy";
