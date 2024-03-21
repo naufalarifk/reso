@@ -1,11 +1,12 @@
 // import { useEffect, useRef, useState } from "react";
 
 import { useCallback, useState } from "react";
-import { ButtonGlow } from "@/components";
+import { ButtonGlow, Text } from "@/components";
 import { AnimatePresence, motion } from "framer-motion";
 import { NavLink } from "react-router-dom";
 import { useWeb3Modal } from '@web3modal/wagmi/react'
 import { TokenList } from "@/components";
+import { IcDropdown, IcThreeDots, IcWeb } from "@/assets/icons";
 
 const navLink = [
   {
@@ -133,8 +134,18 @@ export const HeaderDashboard = () => {
                   </li>
                 ))}
             </ul>
-            <div onClick={() => setOpenTokenList(!openTokenList)}>test</div>
-            <ButtonGlow onClick={handleConnectWallet}>Connect Wallet</ButtonGlow>
+            {
+              isLoggedIn ?
+                <div className="flex justify-between space-x-3">
+                  <ButtonGlow className="space-x-1 px-2"><img src="/images/placeholder.svg" /><Text className="font-semibold">0x430Fe...</Text><IcDropdown /></ButtonGlow>
+                  <ButtonGlow className="px-0 w-[80px]"><IcThreeDots /></ButtonGlow>
+                  <ButtonGlow className="px-0 w-[80px]"><IcWeb /></ButtonGlow>
+                </div> :
+                <>
+                  <div onClick={() => setOpenTokenList(!openTokenList)}>Token List</div>
+                  <ButtonGlow onClick={handleConnectWallet}>Connect Wallet</ButtonGlow>
+                </>
+            }
           </div>
         </div>
       </div>
