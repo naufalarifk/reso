@@ -22,7 +22,7 @@ export const CardStaking = ({
   item,
 }: CardStakingProps) => {
   return (
-    <div className="relative z-20 bg-[#5D636F1A]  p-6 border-[0.5px] border-[#FFFFFF1A] w-full min-w-sm rounded-xl bg-card-background from-[rgba(93,99,111,0.1)] to-[rgba(25,30,40,0.5)]">
+    <div className="relative z-20 bg-[#5D636F1A] p-4 md:p-6 border-[0.5px] border-[#FFFFFF1A] w-full min-w-sm rounded-xl bg-card-background from-[rgba(93,99,111,0.1)] to-[rgba(25,30,40,0.5)]">
       <div className="space-y-6">
         <div className="flex  items-center gap-7">
           <div className="relative flex items-center justify-center">

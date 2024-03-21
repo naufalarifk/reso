@@ -863,42 +863,44 @@ export function Landing() {
                 </defs>
               </svg>
             </div>
-            <motion.div
-              initial={{
-                y: 50,
-                opacity: 0,
-              }}
-              whileInView={{
-                y: 0,
-                opacity: 1,
-                transition: {
-                  y: {
-                    duration: 1,
+            <div className="h-full w-full p-6 lg:p-0 bg-black flex items-center justify-center flex-col">
+              <motion.div
+                initial={{
+                  y: 50,
+                  opacity: 0,
+                }}
+                whileInView={{
+                  y: 0,
+                  opacity: 1,
+                  transition: {
+                    y: {
+                      duration: 1,
+                    },
+                    opacity: {
+                      duration: 2,
+                    },
                   },
-                  opacity: {
-                    duration: 2,
-                  },
-                },
-              }}
-              viewport={{
-                once: true,
-              }}
-              className="h-full w-full p-6 lg:p-0 bg-black flex items-center justify-center flex-col"
-            >
-              <div className="text-white mb-4 text-center text-2xl lg:text-4xl font-semibold">
-                Connect to what you{" "}
-                <span className="text-primary">actually need</span>
-              </div>
-              <div className="lg:text-lg text-sm font-light text-center text-darkSoft mb-10">
-                Through our advanced AI technology, we empower developers with
-                the ability to think fast, produce more efficient code
-              </div>
-              <div className="border-animate-wrapper cursor-pointer rounded-full lg:w-[450px] lg:min-w--[150px] lg:min-h-[48px] w-full h-[50px]">
-                <div className="border-animate-content text-white bg-black rounded-full flex items-center justify-center">
-                  Try Now
+                }}
+                viewport={{
+                  once: true,
+                }}
+                className="flex items-center justify-center flex-col"
+              >
+                <div className="text-white mb-4 text-center text-2xl lg:text-4xl font-semibold">
+                  Connect to what you{" "}
+                  <span className="text-primary">actually need</span>
                 </div>
-              </div>
-            </motion.div>
+                <div className="lg:text-lg text-sm font-light text-center text-darkSoft mb-10">
+                  Through our advanced AI technology, we empower developers with
+                  the ability to think fast, produce more efficient code
+                </div>
+                <div className="border-animate-wrapper cursor-pointer rounded-full lg:w-[450px] lg:min-w--[150px] lg:min-h-[48px] w-full h-[50px]">
+                  <div className="border-animate-content text-white bg-black rounded-full flex items-center justify-center">
+                    Try Now
+                  </div>
+                </div>
+              </motion.div>
+            </div>
             <div className="absolute lg:-bottom-14 -bottom-4 -left-6   lg:-left-20">
               <svg
                 className="lg:w-[220px] lg:h-[221px] w-20 h-20"

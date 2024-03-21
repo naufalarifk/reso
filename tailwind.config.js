@@ -19,6 +19,9 @@ export default {
       fontFamily: {
         dm: ["DM Sans", "sans-serif"],
       },
+      fontSize: {
+        xxs: "10px",
+      },
       keyframes: {
         shimmer: {
           "100%": {
