@@ -6,12 +6,13 @@ import Marquee from "react-fast-marquee";
 import { loadSlim } from "@tsparticles/slim";
 
 import { useEffect, useMemo, useRef, useState } from "react";
-import { ButtonGlow, Footer, Header } from "@/components";
+import { ButtonConnectWallet, ButtonGlow, Footer, Header } from "@/components";
+import { useAccount } from "wagmi";
 
 export function Landing() {
   const data = [90, 20, 50, 100, 70];
   const containerRef = useRef<HTMLDivElement>(null);
-
+  const account = useAccount();
   const { scrollYProgress } = useScroll({
     target: containerRef,
   });
@@ -184,7 +185,8 @@ export function Landing() {
               All-in-One Platform for Decentralized Exchange, Staking, and
               Streamlined Bridging, Unlocking Limitless Possibilities
             </p>
-            <ButtonGlow onClick={() => ""}>Connect Wallet</ButtonGlow>
+
+            {!account.isConnected && <ButtonConnectWallet />}
           </motion.div>
           <div
             style={{
