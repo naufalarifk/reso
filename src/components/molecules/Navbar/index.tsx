@@ -1,11 +1,11 @@
-// import { useEffect, useRef, useState } from "react";
-
 import { useState } from "react";
 import { ButtonGlow } from "@/components";
 import { AnimatePresence, motion } from "framer-motion";
 import { NavLink } from "react-router-dom";
 import { useWeb3Modal } from "@web3modal/wagmi/react";
 import { TokenList } from "../TokenList";
+import { useAccount, useEnsAvatar, useEnsName } from "wagmi";
+import { formatAddress } from "@/utils";
 
 const navLink = [
   {
@@ -31,29 +31,14 @@ const navLink = [
 ];
 
 export const Header = () => {
-  // const lastScrollTop = useRef(0);
-
+  const { address, isConnected } = useAccount();
+  const { open } = useWeb3Modal();
+  const { data: ensName } = useEnsName({ address });
   const [toggle, setToggle] = useState(false);
   const [openTokenList, setOpenTokenList] = useState(false);
-  const { open } = useWeb3Modal();
+  const { data: ensAvatar } = useEnsAvatar({ name: ensName! });
 
-  // const [isNavbarVisible, setIsNavbarVisible] = useState(true);
-
-  // useEffect(() => {
-  //   window.addEventListener(
-  //     "scroll",
-  //     () => {
-  //       const { scrollY } = window;
-  //       if (scrollY > lastScrollTop.current) {
-  //         setIsNavbarVisible(false);
-  //       } else if (scrollY < lastScrollTop.current) {
-  //         setIsNavbarVisible(true);
-  //       }
-  //       lastScrollTop.current = scrollY <= 0 ? 0 : scrollY;
-  //     },
-  //     { passive: true }
-  //   );
-  // }, []);
+  const formattedAddress = formatAddress(address);
 
   return (
     <div
@@ -148,8 +133,33 @@ export const Header = () => {
                   </li>
                 ))}
             </ul>
+
             {/* <div onClick={() => setOpenTokenList(!openTokenList)}>test</div> */}
-            <ButtonGlow onClick={() => open()}>Connect Wallet</ButtonGlow>
+            {!isConnected ? (
+              <ButtonGlow onClick={() => open()}>Connect Wallet</ButtonGlow>
+            ) : (
+              <ButtonGlow
+                className="gap-3"
+                onClick={() => open({ view: "Account" })}
+              >
+                {ensAvatar ? (
+                  <img
+                    alt="ENS Avatar"
+                    className="avatar w-5 h-5"
+                    src={ensAvatar}
+                  />
+                ) : (
+                  <img className="avatar" src="/images/placeholder.svg" />
+                )}
+                {address && (
+                  <div className="text-sm">
+                    {ensName
+                      ? `${ensName} (${formattedAddress})`
+                      : formattedAddress}
+                  </div>
+                )}
+              </ButtonGlow>
+            )}
           </div>
         </div>
       </div>

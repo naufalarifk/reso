@@ -3,5 +3,6 @@ export * from "./CardStaking";
 export * from "./ModalUnstake";
 export * from "./BridgeSteps";
 export * from "./BridgeInput";
-export * from "./TokenList"
+export * from "./TokenList";
 export * from "./Footer";
+export * from "./ButtonConnectWallet";
