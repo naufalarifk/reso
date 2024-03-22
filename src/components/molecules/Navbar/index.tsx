@@ -1,11 +1,8 @@
 import { useState } from "react";
-import { ButtonGlow } from "@/components";
+import { ButtonConnectWallet } from "@/components";
 import { AnimatePresence, motion } from "framer-motion";
 import { NavLink } from "react-router-dom";
-import { useWeb3Modal } from "@web3modal/wagmi/react";
 import { TokenList } from "../TokenList";
-import { useAccount, useEnsAvatar, useEnsName } from "wagmi";
-import { formatAddress } from "@/utils";
 
 const navLink = [
   {
@@ -31,14 +28,9 @@ const navLink = [
 ];
 
 export const Header = () => {
-  const { address, isConnected } = useAccount();
-  const { open } = useWeb3Modal();
-  const { data: ensName } = useEnsName({ address });
   const [toggle, setToggle] = useState(false);
   const [openTokenList, setOpenTokenList] = useState(false);
-  const { data: ensAvatar } = useEnsAvatar({ name: ensName! });
 
-  const formattedAddress = formatAddress(address);
 
   return (
     <div
@@ -61,19 +53,16 @@ export const Header = () => {
             className="z-[999] flex h-[40px] w-[40px] cursor-pointer items-center justify-center rounded-md bg-primary text-lg hover:bg-primary md:hidden"
           >
             <span
-              className={`absolute h-[2px] w-[20px] transform rounded bg-white transition  ${
-                toggle ? "translate-y-0 rotate-45" : "-translate-y-2"
-              }`}
+              className={`absolute h-[2px] w-[20px] transform rounded bg-white transition  ${toggle ? "translate-y-0 rotate-45" : "-translate-y-2"
+                }`}
             />
             <span
-              className={`h-[2px] w-[20px] transform rounded bg-white transition  absolute${
-                toggle ? "translate-x-3 opacity-0" : "opacity-100"
-              }`}
+              className={`h-[2px] w-[20px] transform rounded bg-white transition  absolute${toggle ? "translate-x-3 opacity-0" : "opacity-100"
+                }`}
             />
             <span
-              className={`absolute h-[2px] w-[20px] transform rounded bg-white transition  ${
-                toggle ? "translate-y-0 -rotate-45" : "translate-y-2"
-              }`}
+              className={`absolute h-[2px] w-[20px] transform rounded bg-white transition  ${toggle ? "translate-y-0 -rotate-45" : "translate-y-2"
+                }`}
             />
           </button>
           <AnimatePresence>
@@ -135,31 +124,7 @@ export const Header = () => {
             </ul>
 
             {/* <div onClick={() => setOpenTokenList(!openTokenList)}>test</div> */}
-            {!isConnected ? (
-              <ButtonGlow onClick={() => open()}>Connect Wallet</ButtonGlow>
-            ) : (
-              <ButtonGlow
-                className="gap-3"
-                onClick={() => open({ view: "Account" })}
-              >
-                {ensAvatar ? (
-                  <img
-                    alt="ENS Avatar"
-                    className="avatar w-5 h-5"
-                    src={ensAvatar}
-                  />
-                ) : (
-                  <img className="avatar" src="/images/placeholder.svg" />
-                )}
-                {address && (
-                  <div className="text-sm">
-                    {ensName
-                      ? `${ensName} (${formattedAddress})`
-                      : formattedAddress}
-                  </div>
-                )}
-              </ButtonGlow>
-            )}
+            <ButtonConnectWallet />
           </div>
         </div>
       </div>
