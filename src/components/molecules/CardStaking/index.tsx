@@ -11,7 +11,7 @@ type Card = {
 interface CardStakingProps {
   isConnected: boolean;
   item: Card;
-  handleConnected: () => void;
+  handleConnected?: () => void;
   whileConnected: () => void;
 }
 

@@ -1,11 +1,14 @@
 import { CardStaking, Tabs, Text } from "@/components";
 import { STAKE_COIN } from "@/constants";
-import { useMemo, useState } from "react";
+import { useWeb3Modal } from "@web3modal/wagmi/react";
+import { useMemo } from "react";
 import { useNavigate } from "react-router-dom";
+import { useAccount } from "wagmi";
 
 export const Staking = () => {
   const navigate = useNavigate();
-  const [connect, setConnect] = useState(false);
+  const { isConnected } = useAccount();
+  const { open } = useWeb3Modal();
 
   const tabs = useMemo(
     () => [
@@ -16,7 +19,8 @@ export const Staking = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
               {STAKE_COIN.map((item) => (
                 <CardStaking
-                  isConnected={connect}
+                  handleConnected={() => open()}
+                  isConnected={isConnected}
                   whileConnected={() =>
                     navigate(
                       `create?type=${
@@ -35,7 +39,6 @@ export const Staking = () => {
                       }`
                     )
                   }
-                  handleConnected={() => setConnect(!connect)}
                   item={{
                     coinOne: item.staking_card?.ticker_symbol || "BTC",
                     coinTwo: "Reso",
@@ -60,7 +63,7 @@ export const Staking = () => {
         content: <div className="mt-10">No Data</div>,
       },
     ],
-    [connect, navigate]
+    [isConnected, navigate]
   );
 
   return (
