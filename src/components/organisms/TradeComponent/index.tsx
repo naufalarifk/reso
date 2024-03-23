@@ -3,6 +3,7 @@ import { Button, Input, Text, Toggle } from "@/components"
 import { Slider } from "@/components/atoms/Slider";
 import { SwapComponent } from "@/components/molecules/SwapComponent";
 import { ChangeEvent, Dispatch, SetStateAction, useState } from "react"
+import { useAccount } from "wagmi";
 
 type Trades = 'Long' | 'Short' | 'Swap'
 interface TradeComponentProps {
@@ -30,6 +31,7 @@ export const TradeComponent = ({ isActive, setIsActive }: TradeComponentProps) =
         backdropFilter: `blur(12px)`
     }
 
+    const { isConnected } = useAccount();
     const [leverage, setLeverage] = useState(0)
     const [selectedMenu, setSelectedMenu] = useState('Market')
     const [toggleLeverage, setToggleLeverage] = useState(false)
@@ -62,10 +64,13 @@ export const TradeComponent = ({ isActive, setIsActive }: TradeComponentProps) =
                     <Text className={`${isActive === 'Swap' ? 'text-[#FE9F00]' : 'text-[#9F9F9F]'} font-semibold`}>Swap</Text>
                 </Button>
             </div>
-            <div className="bg-[#FE9F001A] p-4 rounded-lg">
-                <IcWarning className="mx-auto" />
-                <Text className="text-[#FE9F00] text-center w-4/5 mx-auto">Connect your wallet to deposit fund and start trading.</Text>
-            </div>
+            {
+                !isConnected &&
+                <div className="bg-[#FE9F001A] p-4 rounded-lg">
+                    <IcWarning className="mx-auto" />
+                    <Text className="text-[#FE9F00] text-center w-4/5 mx-auto">Connect your wallet to deposit fund and start trading.</Text>
+                </div>
+            }
             <div className="flex justify-between">
                 <div className="flex space-x-4">
                     {
