@@ -63,7 +63,7 @@ export const Staking = () => {
         content: <div className="mt-10">No Data</div>,
       },
     ],
-    [isConnected, navigate]
+    [isConnected, navigate, open]
   );
 
   return (
