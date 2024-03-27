@@ -1,17 +1,18 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { type ISourceOptions } from "@tsparticles/engine";
 import Particles, { initParticlesEngine } from "@tsparticles/react";
-import Marquee from "react-fast-marquee";
+// import Marquee from "react-fast-marquee";
 
 import { loadSlim } from "@tsparticles/slim";
 
 import { useEffect, useMemo, useRef, useState } from "react";
-import { ButtonConnectWallet, ButtonGlow, Footer, Header } from "@/components";
+import { ButtonConnectWallet, Footer, Header } from "@/components";
 import { useAccount } from "wagmi";
 import { useTranslation } from "react-i18next";
+import { IcStar } from "@/assets/icons";
 
 export function Landing() {
-  const data = [90, 20, 50, 100, 70];
+  // const data = [90, 20, 50, 100, 70];
 
   const { t } = useTranslation();
 
@@ -46,7 +47,7 @@ export function Landing() {
           },
         },
         color: {
-          value: ["#fdcf58", "#757676", "#f27d0c", "#800909", "#f07f13"],
+          value: ["#F23F5D", "#F3506C", "#DC3955", "#800909", "#f07f13"],
         },
         opacity: {
           value: { min: 0.1, max: 0.5 },
@@ -115,10 +116,10 @@ export function Landing() {
   );
 
   return (
-    <div className="h-full overflow-x-hidden min-h-screen">
+    <div className="h-full overflow-x-hidden min-h-screen bg-dark">
       <img
-        src="/images/grid.png"
-        className="absolute w-[1920px] h-[1080px] -top-28 "
+        src="/images/wave.png"
+        className="absolute w-[1920px] h-[1080px] -top-1"
         alt=""
       />
       {init && (
@@ -126,14 +127,16 @@ export function Landing() {
           <Particles
             id="tsparticles"
             options={optionsFire}
-            className="w-[400px] lg:w-[800px] h-[500px]"
+            className="h-[600px] opacity-80  w-full"
           />
         </div>
       )}
+
       <motion.div
-        className="absolute gradient_1 w-[350px] h-[350px]  lg:w-[650px] -top-30
-    lg:h-[650px]"
+        className="gradient_1 w-[350px] h-[350px]  lg:w-[850px]
+    lg:h-[850px]"
       />
+
       {/* Navbar Section */}
       <Header />
       {/* Hero Section */}
@@ -179,15 +182,19 @@ export function Landing() {
                   fill="#fff"
                 />
               </svg>
-              All In Platform For Decentralize Blockchain
+              {t("landing.cta")}
             </div>
-            <h1 className="text-white z-10 font-semibold text-5xl">
-              {t("landing.title.one")}
-              <span className="text-primary"> {t("landing.title.two")}</span>
-            </h1>
-            <p className="text-soft">
-              All-in-One Platform for Decentralized Exchange, Staking, and
-              Streamlined Bridging, Unlocking Limitless Possibilities
+            <div className="w-11/12">
+              <h1 className="text-white z-10 leading-snug font-extrabold text-5xl">
+                {t("landing.hero.title.one")}
+                <span className="text-primary">
+                  {" "}
+                  {t("landing.hero.title.two")}
+                </span>
+              </h1>
+            </div>
+            <p className="text-soft font-medium">
+              {t("landing.hero.subtitle")}
             </p>
 
             {!account.isConnected && <ButtonConnectWallet />}
@@ -199,18 +206,18 @@ export function Landing() {
             className="w-full flex items-center justify-center"
           >
             <motion.div
-              className="w-full flex items-center justify-center"
+              className="w-full relative  flex items-center justify-center"
               style={{
                 rotateX: translate, // rotate in X-axis
               }}
             >
-              <img className="w-11/12" src="/images/herolanding.png" alt="" />
+              <img className="w-10/12" src="/images/herolanding.png" alt="" />
             </motion.div>
           </div>
         </div>
       </div>
 
-      <div className="pb-16 xl:py-28 hidden md:block">
+      {/* <div className="pb-16 xl:py-28 hidden md:block">
         <div className="layout">
           <div className="flex w-full items-center justify-center  ">
             <div className="flex relative justify-around items-center">
@@ -273,64 +280,70 @@ export function Landing() {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
 
       {/* Features Section */}
       <div className="pb-[60rem] md:pb-[30rem] h-full lg:pb-20 relative overflow-hidden pt-1 ">
+        <div className="absolute top-1 left-0">
+          <svg
+            width={438}
+            height={535}
+            viewBox="0 0 438 535"
+            className="opacity-10 blur-sm"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M384.444-368.61l51.518 78.99-404.62 633.613-28.15-115.582L384.443-368.61z"
+              fill="#BC123C"
+            />
+            <path
+              d="M382.215-180.246l55.33 81.424L32.925 534.79.963 416.775l381.252-597.021z"
+              fill="#F23F5D"
+            />
+          </svg>
+        </div>
+        <div className="absolute top-10 left-20">
+          <IcStar className="text-red-200" />
+        </div>
+        <div className="absolute top-10 right-20">
+          <IcStar className="text-red-400" />
+        </div>
+        <div className="absolute bottom-10 left-20">
+          <IcStar className="text-red-100 w-12 h-12" />
+        </div>
+        <div className="absolute bottom-0 right-0">
+          <svg
+            width={438}
+            height={540}
+            viewBox="0 0 438 540"
+            fill="none"
+            className="opacity-10 blur-sm"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M384.444.39l51.518 78.99-404.62 633.613-28.15-115.582L384.443.39z"
+              fill="#BC123C"
+            />
+            <path
+              d="M382.216 188.754l55.329 81.424-404.62 633.613L.963 785.775l381.253-597.021z"
+              fill="#F23F5D"
+            />
+          </svg>
+        </div>
         <div className="h-[1.5px] gradient_border w-full absolute top-0" />
         <div className="layout relative">
           <div className="absolute gradient_2" />
           {init && (
             <div className="bg-transparent absolute -top-40">
-              <Particles id="tsparticlessnow" options={optionSnow} />
+              <Particles
+                id="tsparticlessnow"
+                className="h-[600px]"
+                options={optionSnow}
+              />
             </div>
           )}
-          <motion.div
-            initial={{
-              y: -100,
-              opacity: 0,
-            }}
-            whileInView={{
-              y: 0,
-              opacity: 1,
-              transition: {
-                y: {
-                  delay: 1,
-                  duration: 1,
-                  ease: "easeInOut",
-                },
-              },
-            }}
-            viewport={{
-              once: true,
-            }}
-            className="pt-10 md:pt-20 md:hidden"
-          >
-            <img src="/images/rounded.png" alt="" />
-          </motion.div>
-          <motion.div
-            initial={{
-              y: -600,
-              opacity: 0,
-            }}
-            whileInView={{
-              y: 0,
-              opacity: 1,
-              transition: {
-                y: {
-                  delay: 1,
-                  duration: 1,
-                  ease: "easeInOut",
-                },
-              },
-            }}
-            viewport={{
-              once: true,
-            }}
-            className="pt-10 md:pt-20 hidden md:block"
-          >
-            <img src="/images/rounded.png" alt="" />
-          </motion.div>
+
           <motion.div
             initial={{
               y: 150,
@@ -341,8 +354,6 @@ export function Landing() {
               opacity: 1,
               transition: {
                 y: {
-                  delay: 1,
-                  duration: 1.2,
                   ease: "easeIn",
                   type: "spring",
                   damping: 10,
@@ -356,10 +367,10 @@ export function Landing() {
             viewport={{
               once: true,
             }}
-            className="absolute top-28 md:top-32 w-full"
+            className="py-24"
           >
             <div className="flex flex-col items-center justify-center ">
-              <div className="border border-white/20 mb-10 rounded-full py-1.5 text-white h-[42px] w-max px-4 flex items-center gap-3">
+              <div className="border border-white/10 mb-10 rounded-full py-1.5 text-white h-[42px] w-max px-4 flex items-center gap-3">
                 <svg
                   width={16}
                   height={16}
@@ -377,17 +388,18 @@ export function Landing() {
                     fill="#fff"
                   />
                 </svg>
-                What We Provide To You
+                {t("landing.tags.provide")}
               </div>
               <div className="space-y-2 md:space-y-5 text-2xl md:text-3xl font-semibold text-center">
                 <div className="flex items-center text-center text-white">
-                  Access the powerful and
+                  {t("landing.features.title.one")}
                 </div>
-                <div className="text-primary">helpful features.</div>
+                <div className="text-primary">
+                  {t("landing.features.title.two")}
+                </div>
               </div>
               <div className="text-soft mt-4 text-base md:text-xl font-medium w-full md:w-7/12 text-center">
-                Unleash unparalleled efficiency as Nexus AI transforms the
-                mundane task of web clipping into an extraordinary journey.
+                {t("landing.features.subtitle")}
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mx-10 mt-10 lg:gap-16">
                 <div className="flex flex-col  items-center">
@@ -411,7 +423,9 @@ export function Landing() {
                     </div>
                   </div>
                   <div className="text-center mt-4 space-y-2">
-                    <div className="text-white">Decentralize Trade</div>
+                    <div className="text-white">
+                      {t("landing.features.card.title.one")}
+                    </div>
                     <div className="text-soft">
                       Save newsletters with one shortcut, no more forwarding to
                       complicated email
@@ -436,7 +450,9 @@ export function Landing() {
                     </div>
                   </div>
                   <div className="text-center mt-4 space-y-2">
-                    <div className="text-white">Bridge Platform</div>
+                    <div className="text-white">
+                      {t("landing.features.card.title.two")}
+                    </div>
                     <div className="text-soft">
                       Save newsletters with one shortcut, no more forwarding to
                       complicated email
@@ -461,7 +477,9 @@ export function Landing() {
                     </div>
                   </div>
                   <div className="text-center mt-4 space-y-2">
-                    <div className="text-white">Swap</div>
+                    <div className="text-white">
+                      {t("landing.features.card.title.three")}
+                    </div>
                     <div className="text-soft">
                       Save newsletters with one shortcut, no more forwarding to
                       complicated email
@@ -487,7 +505,9 @@ export function Landing() {
                       </div>
                     </div>
                     <div className="text-center mt-4 space-y-2">
-                      <div className="text-white">Staking Platform</div>
+                      <div className="text-white capitalize">
+                        {t("landing.features.card.title.four")}
+                      </div>
                       <div className="text-soft">
                         Save newsletters with one shortcut, no more forwarding
                         to complicated email
@@ -502,7 +522,12 @@ export function Landing() {
       </div>
 
       {/*  Fusing Section */}
-      <div className="pt-28 pb-10">
+      <div className="pt-28 pb-10 relative">
+        <img
+          src="/images/wave.png"
+          className="absolute w-[1920px] h-[1080px] -top-32"
+          alt=""
+        />
         <div className="layout">
           <motion.div
             initial={{
@@ -530,10 +555,10 @@ export function Landing() {
             viewport={{
               once: true,
             }}
-            className="flex flex-col md:flex-row gap-10"
+            className="flex flex-col justify-between items-center md:flex-row gap-10"
           >
-            <div className="w-full md:w-7/12">
-              <div className="border border-white/20 rounded-full py-1.5 text-white h-[42px] w-max px-4 flex items-center gap-3">
+            <div className="w-full">
+              <div className="border border-white/20 rounded-full text-xs py-1.5 text-white h-[42px] w-max px-4 flex items-center gap-3">
                 <svg
                   width={16}
                   height={16}
@@ -551,14 +576,16 @@ export function Landing() {
                     fill="#fff"
                   />
                 </svg>
-                Decentralize Trade
+                {t("landing.tags.decentralize")}
               </div>
-              <div className="text-white mt-4 text-2xl md:text-4xl w-12/12 leading-normal font-semibold">
-                Fusing Ideas, Empowering Solutions, Redefining{" "}
-                <span className="text-primary">Decentralization</span>
+              <div className="text-white mt-4 text-2xl md:text-4xl w-12/12 leading-normal font-bold">
+                {t("landing.info.phaseOne.title.one")}{" "}
+                <span className="text-primary">
+                  {t("landing.info.phaseOne.title.two")}
+                </span>
               </div>
               <div>
-                <div className="w-full md:w-5/6 text-xs md:text-base space-y-4 mt-8 text-white">
+                <div className="w-full md:w-5/6 text-xs md:text-base space-y-4 mt-8 text-soft">
                   <div className="flex items-start">
                     <svg
                       className="w-5 h-5 mr-4 fill-current text-primary"
@@ -567,9 +594,7 @@ export function Landing() {
                     >
                       <circle cx="12" cy="12" r="10" />
                     </svg>
-                    Centralize all customer feedback in a matter of minutes
-                    social media, sales calls, support tickets, community
-                    forums.
+                    {t("landing.info.phaseOne.list.one")}
                   </div>
                   <div className="flex items-start">
                     <svg
@@ -579,9 +604,7 @@ export function Landing() {
                     >
                       <circle cx="12" cy="12" r="10" />
                     </svg>
-                    Centralize all customer feedback in a matter of minutes
-                    social media, sales calls, support tickets, community
-                    forums.
+                    {t("landing.info.phaseOne.list.two")}
                   </div>
                   <div className="flex items-start">
                     <svg
@@ -591,30 +614,29 @@ export function Landing() {
                     >
                       <circle cx="12" cy="12" r="10" />
                     </svg>
-                    Centralize all customer feedback in a matter of minutes
-                    social media, sales calls, support tickets, community
-                    forums.
+                    {t("landing.info.phaseOne.list.three")}
                   </div>
                 </div>
               </div>
-              <div className="mt-5">
-                <ButtonGlow onClick={() => ""}>Try Now</ButtonGlow>
-              </div>
             </div>
-            <div
-              className="w-full md:w-5/12 relative"
-              style={{
-                perspective: "20000px",
-              }}
-            >
-              <img src="/images/bordertrade.png" className="skew-y-3" alt="" />
+            <div className="w-full">
+              <img
+                src="/images/bordertrade.png"
+                className="w-full"
+                alt="border-trade"
+              />
             </div>
           </motion.div>
         </div>
       </div>
 
       {/*  Fusing Section */}
-      <div className="pt-16 pb-32">
+      <div className="pt-16 pb-32 relative">
+        <img
+          src="/images/wave.png"
+          className="absolute w-[1920px] h-[1080px] -top-20"
+          alt=""
+        />
         <div className="layout">
           <motion.div
             initial={{
@@ -642,7 +664,7 @@ export function Landing() {
             viewport={{
               once: true,
             }}
-            className="flex flex-col md:flex-row justify-end gap-10"
+            className="flex flex-col items-center md:flex-row justify-end gap-10"
           >
             <div
               className="w-full order-2 md:order-1 md:w-6/12 relative"
@@ -650,10 +672,10 @@ export function Landing() {
                 perspective: "20000px",
               }}
             >
-              <img src="/images/borderbridge.png" className="skew-y-3" alt="" />
+              <img src="/images/bordertrade.png" alt="" />
             </div>
             <div className="w-full md:w-6/12 order-1 lg:order-1 flex flex-col items-end justify-end text-right">
-              <div className="border border-white/20 rounded-full py-1.5 text-white h-[42px] w-max px-4 flex items-center gap-3">
+              <div className="border text-xs border-white/20 rounded-full py-1.5 text-white h-[42px] w-max px-4 flex items-center gap-3">
                 <svg
                   width={16}
                   height={16}
@@ -671,51 +693,46 @@ export function Landing() {
                     fill="#fff"
                   />
                 </svg>
-                Decentralize Trade
+                {t("landing.tags.methods")}
               </div>
-              <div className="text-white mt-4 text-2xl lg:text-4xl w-12/12 leading-normal font-semibold">
-                Fusing Ideas, Empowering Solutions, Redefining{" "}
-                <span className="text-primary">Decentralization</span>
-              </div>
-
-              <div className="text-sm space-y-4 mt-8 text-white">
-                <div className="flex items-start">
-                  Centralize all customer feedback in a matter of minutes social
-                  media, sales calls, support tickets, community forums.
-                  <svg
-                    className="w-5 h-5 ml-4  fill-current text-primary"
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 24 24"
-                  >
-                    <circle cx="12" cy="12" r="10" />
-                  </svg>
-                </div>
-                <div className="flex items-start">
-                  Centralize all customer feedback in a matter of minutes social
-                  media, sales calls, support tickets, community forums.
-                  <svg
-                    className="w-5 h-5 ml-4  fill-current text-primary"
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 24 24"
-                  >
-                    <circle cx="12" cy="12" r="10" />
-                  </svg>
-                </div>
-                <div className="flex items-start">
-                  Centralize all customer feedback in a matter of minutes social
-                  media, sales calls, support tickets, community forums.
-                  <svg
-                    className="w-5 h-5 ml-4  fill-current text-primary"
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 24 24"
-                  >
-                    <circle cx="12" cy="12" r="10" />
-                  </svg>
-                </div>
+              <div className="text-white mt-4 text-2xl lg:text-4xl w-12/12 leading-normal font-bold">
+                {t("landing.info.phaseTwo.title.one")}{" "}
+                <span className="text-primary">
+                  {t("landing.info.phaseTwo.title.two")}
+                </span>
               </div>
 
-              <div className="mt-5">
-                <ButtonGlow onClick={() => ""}>Try Now</ButtonGlow>
+              <div className="text-sm space-y-4 mt-8 text-soft">
+                <div className="flex items-start">
+                  {t("landing.info.phaseTwo.list.one")}
+                  <svg
+                    className="w-5 h-5 ml-4  fill-current text-primary"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                  >
+                    <circle cx="12" cy="12" r="10" />
+                  </svg>
+                </div>
+                <div className="flex items-start">
+                  {t("landing.info.phaseTwo.list.two")}
+                  <svg
+                    className="w-5 h-5 ml-4  fill-current text-primary"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                  >
+                    <circle cx="12" cy="12" r="10" />
+                  </svg>
+                </div>
+                <div className="flex items-start">
+                  {t("landing.info.phaseTwo.list.three")}
+                  <svg
+                    className="w-5 h-5 ml-4  fill-current text-primary"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                  >
+                    <circle cx="12" cy="12" r="10" />
+                  </svg>
+                </div>
               </div>
             </div>
           </motion.div>
@@ -764,21 +781,23 @@ export function Landing() {
                 fill="#fff"
               />
             </svg>
-            Decentralize Trade
+            {t("landing.tags.exchange")}
           </div>
 
-          <div className="text-white text-center font-semibold text-2xl lg:text-3xl mt-4">
-            Connect to what you{" "}
-            <span className="text-primary">actually need</span>
+          <div className="text-white w-6/12 text-center font-bold text-2xl lg:text-3xl mt-4">
+            {t("landing.provider.title.one")}{" "}
+            <span className="text-primary">
+              {t("landing.provider.title.two")}
+            </span>
           </div>
-          <div className="text-darkSoft mt-4 font-light text-sm lg:text-lg lg:w-8/12 text-center">
-            Through our advanced AI technology, we empower developers with the
-            ability to think fast, produce more efficient code
+          <div className="text-soft mt-4 font-light text-sm lg:text-lg lg:w-8/12 text-center">
+            Exciting news! Reso lets you connect with various crypto wallets,
+            ensuring you have the freedom to choose what works best for you
           </div>
 
-          <div className="grid grid-cols-4 lg:grid-cols-8 lg:gap-10 layout gap-5 mt-10">
+          <div className="grid grid-cols-4 items-center lg:grid-cols-8 lg:gap-10 layout gap-5 mt-10">
             <img
-              className="lg:w-full lg:h-9"
+              className="lg:w-full"
               src="/images/binance.png"
               alt="binance"
             />
@@ -823,9 +842,9 @@ export function Landing() {
 
       {/* Connect Section */}
       <div className="relative py-20 lg:py-36">
-        <div className="layout">
-          <div className="overflow-hidden relative lg:h-[475px] bg-gradient-to-r from-[#FFFFFF1A] to-[#FFFFFF1A] p-[0.99px]  flex items-center justify-center">
-            <div className="h-[1.5px] gradient_border w-full absolute top-0" />
+        <div className=" ">
+          <div className="overflow-hidden relative lg:h-[475px]  p-[0.99px] bg-dark2  flex items-center justify-center">
+            <div className="h-[1.5px] gradient_border_long w-full absolute top-0" />
             <div
               className="absolute gradient_2 lg:w-[750px]
     lg:h-[180px] w-20 h-48"
@@ -869,7 +888,7 @@ export function Landing() {
                 </defs>
               </svg>
             </div>
-            <div className="h-full w-full p-6 lg:p-0 bg-black flex items-center justify-center flex-col">
+            <div className="h-full w-full p-6 lg:p-0 bg-dark flex items-center justify-center flex-col">
               <motion.div
                 initial={{
                   y: 50,
@@ -896,9 +915,9 @@ export function Landing() {
                   Connect to what you{" "}
                   <span className="text-primary">actually need</span>
                 </div>
-                <div className="lg:text-lg text-sm font-light text-center text-darkSoft mb-10">
-                  Through our advanced AI technology, we empower developers with
-                  the ability to think fast, produce more efficient code
+                <div className="lg:text-lg text-sm font-light text-center text-soft mb-10">
+                  Don't miss out – secure your spot today and elevate your
+                  crypto journey with Reso
                 </div>
                 <div className="border-animate-wrapper cursor-pointer rounded-full lg:w-[450px] lg:min-w--[150px] lg:min-h-[48px] w-full h-[50px]">
                   <div className="border-animate-content text-white bg-black rounded-full flex items-center justify-center">
