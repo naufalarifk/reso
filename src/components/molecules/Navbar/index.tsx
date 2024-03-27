@@ -1,48 +1,53 @@
-import { useState } from "react";
-import { ButtonConnectWallet } from "@/components";
+import { Fragment, useState } from "react";
+import { ButtonConnectWallet, ButtonGlow } from "@/components";
 import { AnimatePresence, motion } from "framer-motion";
 import { NavLink } from "react-router-dom";
-import { TokenList } from "../TokenList";
+import { IcWeb } from "@/assets/icons";
+import { useTranslation } from "react-i18next";
+import { Menu, Transition } from "@headlessui/react";
+import { langs, Language } from "@/locales/langs";
 
 const navLink = [
   {
     id: 1,
     name: "Trade",
+    code: "trade",
     setTo: "/trade",
   },
   {
     id: 2,
     name: "Staking",
+    code: "staking",
     setTo: "/staking",
   },
   {
     id: 3,
     name: "Terms and Conditions",
     setTo: "/terms",
+    code: "terms",
   },
   {
     id: 4,
     name: "Privacy Policy",
     setTo: "/privacy",
+    code: "privacy",
   },
 ];
 
 export const Header = () => {
+  const { i18n, t } = useTranslation();
   const [toggle, setToggle] = useState(false);
-  const [openTokenList, setOpenTokenList] = useState(false);
-
-
   return (
     <div
-      className="fixed top-0 bg-black/15 backdrop-blur-lg 
-      z-50 flex h-20 w-full items-center shadow transition-all border-b border-[#FFFFFF33] duration-300 ease-in-out"
+      className="fixed top-0 bg-dark2 backdrop-blur-lg 
+      z-50 flex h-[70px] w-full items-center shadow transition-all   duration-300 ease-in-out"
     >
       <div className="layout">
         <div className="flex items-center justify-between">
           <div className=" ">
             <img
               src="/images/logo.png"
-              className="cursor-pointer w-full relative h-7 z-[999]"
+              className="cursor-pointer w-full relative h-8 z-[999]"
               alt=""
             />
           </div>
@@ -53,16 +58,19 @@ export const Header = () => {
             className="z-[999] flex h-[40px] w-[40px] cursor-pointer items-center justify-center rounded-md bg-primary text-lg hover:bg-primary md:hidden"
           >
             <span
-              className={`absolute h-[2px] w-[20px] transform rounded bg-white transition  ${toggle ? "translate-y-0 rotate-45" : "-translate-y-2"
-                }`}
+              className={`absolute h-[2px] w-[20px] transform rounded bg-white transition  ${
+                toggle ? "translate-y-0 rotate-45" : "-translate-y-2"
+              }`}
             />
             <span
-              className={`h-[2px] w-[20px] transform rounded bg-white transition  absolute${toggle ? "translate-x-3 opacity-0" : "opacity-100"
-                }`}
+              className={`h-[2px] w-[20px] transform rounded bg-white transition  absolute${
+                toggle ? "translate-x-3 opacity-0" : "opacity-100"
+              }`}
             />
             <span
-              className={`absolute h-[2px] w-[20px] transform rounded bg-white transition  ${toggle ? "translate-y-0 -rotate-45" : "translate-y-2"
-                }`}
+              className={`absolute h-[2px] w-[20px] transform rounded bg-white transition  ${
+                toggle ? "translate-y-0 -rotate-45" : "translate-y-2"
+              }`}
             />
           </button>
           <AnimatePresence>
@@ -85,7 +93,9 @@ export const Header = () => {
                         <NavLink
                           to={item.setTo}
                           className={({ isActive }) =>
-                            isActive ? "text-primary" : "text-white"
+                            isActive
+                              ? "text-primary text-base font-medium"
+                              : "text-white text-base font-medium"
                           }
                           onClick={() => setToggle(false)}
                         >
@@ -113,25 +123,74 @@ export const Header = () => {
                     <NavLink
                       to={item.setTo}
                       className={({ isActive }) =>
-                        isActive ? "text-primary" : "text-white"
+                        isActive
+                          ? "text-primary text-base font-medium"
+                          : "text-white text-base font-medium"
                       }
                       onClick={() => setToggle(false)}
                     >
-                      {item.name}
+                      {t(`navbar.menu.${item.code}`)}
                     </NavLink>
                   </li>
                 ))}
             </ul>
 
             {/* <div onClick={() => setOpenTokenList(!openTokenList)}>test</div> */}
-            <ButtonConnectWallet />
+            <div className="flex gap-2">
+              <ButtonConnectWallet />
+              <Menu>
+                <>
+                  <Menu.Button>
+                    <ButtonGlow className="w-12 p-0">
+                      <IcWeb className="text-white" />
+                    </ButtonGlow>
+                  </Menu.Button>
+                  <Transition
+                    as={Fragment}
+                    enter="transition ease-out duration-100"
+                    enterFrom="transform opacity-0 scale-95"
+                    enterTo="transform opacity-100 scale-100"
+                    leave="transition ease-in duration-75"
+                    leaveFrom="transform opacity-100 scale-100"
+                    leaveTo="transform opacity-0 scale-95"
+                  >
+                    <Menu.Items className="absolute  mt-14 w-max right-24 origin-top-right border border-dark2  rounded-xl bg-black shadow-lg focus:outline-none">
+                      <div className="py-6 px-4">
+                        <div className="text-center font-bold text-white">
+                          {t("tags.language")}
+                        </div>
+                        <div className="mt-4 grid grid-cols-3 gap-3">
+                          {langs.map((lang: Language) => (
+                            <Menu.Item key={lang.abbr}>
+                              <ButtonGlow
+                                onClick={() => i18n.changeLanguage(lang.abbr)}
+                                className="flex items-center"
+                              >
+                                {/* <div>
+                                  <IcWeb className="text-white" />
+                                </div> */}
+                                <div
+                                  className={`${
+                                    i18n.language === lang.abbr
+                                      ? "  text-primary"
+                                      : " text-white"
+                                  }`}
+                                >
+                                  {lang.nativeName}
+                                </div>
+                              </ButtonGlow>
+                            </Menu.Item>
+                          ))}
+                        </div>
+                      </div>
+                    </Menu.Items>
+                  </Transition>
+                </>
+              </Menu>
+            </div>
           </div>
         </div>
       </div>
-      <TokenList
-        isOpen={openTokenList}
-        closeModal={() => setOpenTokenList(false)}
-      />
     </div>
   );
 };

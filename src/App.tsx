@@ -1,4 +1,3 @@
-import "./App.css";
 import { BrowserRouter } from "react-router-dom";
 import { RootLayout } from "@/routes";
 import { createWeb3Modal } from "@web3modal/wagmi/react";

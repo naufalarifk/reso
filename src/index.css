@@ -54,7 +54,7 @@
   }
 
   .border-animate-wrapper {
-    @apply relative overflow-hidden bg-[#2F292B];
+    @apply relative overflow-hidden bg-[#1d1e2a];
   }
 
   .border-animate-wrapper:before {
@@ -73,16 +73,15 @@
 
   .gradient_1 {
     position: absolute;
-    top: 1%;
-    left: 50%;
+    left: 55%;
+    margin-top: 55rem;
     transform: translate(-50%, -50%);
     border-radius: 46% 54% 70% 30% / 30% 51% 49% 70%;
     filter: blur(100px);
-    background: #fe9f0066;
-    background: linear-gradient(45deg, #fea10097, #fe9f0066);
+    background: #f23f5d;
+    background: linear-gradient(90deg, #f23f5d22, #941d3114);
   }
 
-  #tsparticlessnow,
   #tsparticlessnowSecond {
     height: 600px;
   }
@@ -91,8 +90,18 @@
     background: rgba(242, 63, 93, 1);
     background: radial-gradient(
       circle,
-      rgba(242, 63, 93, 1) 0%,
+      rgb(255, 159, 175) 0%,
       rgba(0, 212, 255, 0) 29%
+    );
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#fe9f00",endColorstr="#00d4ff",GradientType=1);
+  }
+
+  .gradient_border_long {
+    background: rgba(242, 63, 93, 1);
+    background: radial-gradient(
+      circle,
+      rgba(242, 63, 93, 1) 0%,
+      rgba(0, 212, 255, 0) 75%
     );
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#fe9f00",endColorstr="#00d4ff",GradientType=1);
   }
@@ -104,8 +113,8 @@
     transform: translate(-50%, -50%);
     border-radius: 46% 54% 70% 30% / 30% 51% 49% 70%;
     filter: blur(100px);
-    background: #fea10049;
-    background: linear-gradient(45deg, #fe9d009e, #fe9f0066);
+    background: #f23f5d;
+    background: linear-gradient(45deg, #f23f5d4e, #f23f5d42);
   }
 
   .gradient_3 {
@@ -115,13 +124,12 @@
     transform: translate(-50%, -50%);
     border-radius: 46% 54% 70% 30% / 30% 51% 49% 70%;
     filter: blur(100px);
-    background: #fea10049;
-    background: linear-gradient(45deg, #fe9d009e, #fe9f0066);
+    background: #f23f5d;
+    background: linear-gradient(45deg, #f23f5d60, #f23f5d3f);
   }
 
   .gradient_terms {
     position: absolute;
-
     border-radius: 46% 54% 70% 30% / 30% 51% 49% 70%;
     filter: blur(100px);
     background: #fe9f0066;

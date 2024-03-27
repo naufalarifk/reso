@@ -13,8 +13,10 @@ export default {
         lightGray: "#A3AED0",
         smokeGray: "#F0F0F0",
         primary: "#F23F5D",
-        soft: "#9F9F9F",
+        soft: "#90A3BF",
         darkSoft: "#6B6B6B",
+        dark: "#0E0F19",
+        dark2: "#181924",
       },
       fontFamily: {
         dm: ["DM Sans", "sans-serif"],
