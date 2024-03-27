@@ -12,7 +12,7 @@ export default {
         gray3: "#90A3BF",
         lightGray: "#A3AED0",
         smokeGray: "#F0F0F0",
-        primary: "#FE9F00",
+        primary: "#F23F5D",
         soft: "#9F9F9F",
         darkSoft: "#6B6B6B",
       },

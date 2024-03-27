@@ -60,7 +60,7 @@
   .border-animate-wrapper:before {
     background: conic-gradient(
       rgb(255, 255, 255) 0deg,
-      rgba(254, 159, 0, 1) 0deg,
+      rgba(242, 63, 93, 1) 0deg,
       transparent 100deg
     );
 
@@ -88,10 +88,10 @@
   }
 
   .gradient_border {
-    background: rgb(254, 159, 0);
+    background: rgba(242, 63, 93, 1);
     background: radial-gradient(
       circle,
-      rgba(254, 159, 0, 1) 0%,
+      rgba(242, 63, 93, 1) 0%,
       rgba(0, 212, 255, 0) 29%
     );
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#fe9f00",endColorstr="#00d4ff",GradientType=1);

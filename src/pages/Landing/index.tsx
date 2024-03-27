@@ -8,9 +8,13 @@ import { loadSlim } from "@tsparticles/slim";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { ButtonConnectWallet, ButtonGlow, Footer, Header } from "@/components";
 import { useAccount } from "wagmi";
+import { useTranslation } from "react-i18next";
 
 export function Landing() {
   const data = [90, 20, 50, 100, 70];
+
+  const { t } = useTranslation();
+
   const containerRef = useRef<HTMLDivElement>(null);
   const account = useAccount();
   const { scrollYProgress } = useScroll({
@@ -178,8 +182,8 @@ export function Landing() {
               All In Platform For Decentralize Blockchain
             </div>
             <h1 className="text-white z-10 font-semibold text-5xl">
-              Redefine Your{" "}
-              <span className="text-primary"> Crypto Journey</span>
+              {t("landing.title.one")}
+              <span className="text-primary"> {t("landing.title.two")}</span>
             </h1>
             <p className="text-soft">
               All-in-One Platform for Decentralized Exchange, Staking, and
