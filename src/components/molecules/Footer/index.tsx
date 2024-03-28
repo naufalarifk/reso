@@ -1,26 +1,36 @@
+import { IcDiscord, IcLinkedin, IcTelegram } from "@/assets/icons";
+import { useTranslation } from "react-i18next";
+
 export const Footer = () => {
+  const { t } = useTranslation();
   return (
-    <footer className="py-10 bg-black">
+    <footer className="pt-10 pb-5 bg-dark">
       <div className="layout">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
           <div className="col-span-full  lg:col-span-1 lg:block">
             <div>
               <img src="/images/brand.png" className="w-max h-7" alt="" />
-              <div className="text-darkSoft mt-7 text-sm ">
-                We ara a lorem ipsum dolor sit amet, consectetur adipiscing
-                elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-                aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                ullamco laboris nisi ut aliquip ex ea commodo consequat.
+              <div className="text-soft mt-7 text-sm ">{t("footer.desc")}</div>
+              <div className="flex  mt-6 gap-3">
+                <div className="w-12 h-12 rounded-full flex items-center justify-center cursor-pointer bg-gray-700 group hover:bg-white transition-colors ease-in-out duration-200">
+                  <IcDiscord className="group-hover:text-[#5765f2] w-6 h-6" />
+                </div>
+                <div className="w-12 h-12 rounded-full flex items-center justify-center cursor-pointer bg-gray-700 group hover:bg-white transition-colors ease-in-out duration-200">
+                  <IcLinkedin className="group-hover:text-[#0b65c2] w-6 h-6" />
+                </div>
+                <div className="w-12 h-12 rounded-full flex items-center justify-center cursor-pointer bg-gray-700 group hover:bg-white transition-colors ease-in-out duration-200">
+                  <IcTelegram className="group-hover:text-[#1e98db] w-6 h-6" />
+                </div>
               </div>
             </div>
           </div>
           <div className="col-span-full   lg:col-span-1 lg:block">
             <div className="grid grid-cols-3 gap-8">
               <div>
-                <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">
-                  About
+                <h2 className="mb-6 text-sm font-bold uppercase text-white">
+                  {t("footer.title.one")}
                 </h2>
-                <ul className="text-darkSoft font-medium space-y-4">
+                <ul className="text-soft font-medium space-y-4">
                   <li>
                     <a href="#" className="hover:underlin text-sm font-light">
                       About Us
@@ -49,10 +59,10 @@ export const Footer = () => {
                 </ul>
               </div>
               <div>
-                <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">
-                  Support
+                <h2 className="mb-6 text-sm font-bold uppercase text-white">
+                  {t("footer.title.two")}
                 </h2>
-                <ul className="text-darkSoft font-medium space-y-4">
+                <ul className="text-soft font-medium space-y-4">
                   <li>
                     <a href="#" className="hover:underlin text-sm font-light">
                       Contact us
@@ -82,34 +92,34 @@ export const Footer = () => {
                 </ul>
               </div>
               <div>
-                <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">
-                  FAQ
+                <h2 className="mb-6 text-sm font-bold  uppercase text-white">
+                  {t("footer.title.three")}
                 </h2>
-                <ul className="text-darkSoft font-medium space-y-4">
+                <ul className="text-soft font-medium space-y-4">
                   <li>
                     <a href="#" className="hover:underlin text-sm font-light">
-                      Contact us
+                      Account
                     </a>
                   </li>
                   <li>
                     <a href="#" className="hover:underlin text-sm font-light">
-                      Online Chat
+                      Manage Deliveries
                     </a>
                   </li>
                   <li>
                     <a href="#" className="hover:underlin text-sm font-light">
-                      Whatsapp
+                      Orders
                     </a>
                   </li>
 
                   <li>
                     <a href="#" className="hover:underlin text-sm font-light">
-                      Telegram
+                      Payments
                     </a>
                   </li>
                   <li>
                     <a href="#" className="hover:underlin text-sm font-light">
-                      Ticketing
+                      Returns
                     </a>
                   </li>
                 </ul>
@@ -117,6 +127,9 @@ export const Footer = () => {
             </div>
           </div>
         </div>
+      </div>
+      <div className="mt-10 text-center text-sm font-normal text-soft">
+        © 2024, 0xSD All Rights Reserved
       </div>
     </footer>
   );

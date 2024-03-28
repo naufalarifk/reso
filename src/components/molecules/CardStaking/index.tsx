@@ -109,81 +109,64 @@ export const CardStaking = ({
             <div className="flex justify-between items-center">
               <div className="text-soft">Staked</div>
               <div className="flex gap-2 items-center">
-                <span>
-                  {item.isMultiple
-                    ? `${item.coinOne} & ${item.coinTwo}`
-                    : item.coinOne}
-                </span>
-                <div>
-                  <svg
-                    width={30}
-                    height={30}
-                    viewBox="0 0 30 30"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <g clipPath="url(#clip0_726_3281)">
-                      <path
-                        d="M14.71 29.92c8.124 0 14.71-6.586 14.71-14.71S22.833.5 14.71.5 0 7.086 0 15.21s6.586 14.71 14.71 14.71z"
-                        fill="#F7931A"
-                      />
-                      <path
-                        d="M21.174 13.39c.29-1.927-1.18-2.963-3.185-3.655l.65-2.61-1.588-.396-.634 2.542c-.418-.105-.846-.202-1.274-.3l.64-2.558-1.59-.396-.65 2.61c-.346-.08-.686-.157-1.015-.24l.002-.008-2.192-.547-.423 1.697s1.18.27 1.155.287c.643.161.76.587.74.925l-.741 2.974c.044.011.101.028.165.053l-.168-.042-1.039 4.167c-.079.195-.278.488-.729.377.017.023-1.154-.288-1.154-.288l-.79 1.819 2.07.515c.384.097.76.198 1.131.293l-.657 2.64 1.587.395.651-2.61c.434.116.855.225 1.267.328l-.649 2.6 1.589.395.657-2.635c2.71.513 4.748.306 5.605-2.145.692-1.973-.034-3.112-1.46-3.854 1.04-.239 1.82-.922 2.03-2.333zm-3.631 5.091c-.49 1.974-3.813.907-4.89.64l.872-3.499c1.078.27 4.532.802 4.018 2.86zm.492-5.12c-.448 1.796-3.213.883-4.11.66l.791-3.172c.896.223 3.786.64 3.319 2.512z"
-                        fill="#fff"
-                      />
-                    </g>
-                    <defs>
-                      <clipPath id="clip0_726_3281">
-                        <path
-                          fill="#fff"
-                          transform="translate(0 .5)"
-                          d="M0 0H29.4194V29.4194H0z"
-                        />
-                      </clipPath>
-                    </defs>
-                  </svg>
-                </div>
+                {item.isMultiple ? (
+                  <div className="flex flex-row gap-2 items-center">
+                    <div className="flex flex-row gap-2 items-center">
+                      <div>{item.coinOne}</div>
+                      <img className="w-7 h-7" src="/images/btc.png" />
+                    </div>
+                    <div className="flex flex-row gap-2 items-center">
+                      <div>{item.coinTwo}</div>
+                      <img className="w-7 h-7" src="/images/reso.png" />
+                    </div>
+                  </div>
+                ) : (
+                  <div className="flex flex-row items-center gap-3">
+                    <span>{item.coinOne}</span>
+                    <img className="w-7 h-7" src="/images/btc.png" />
+                  </div>
+                )}
               </div>
             </div>
-            <div className="flex justify-between items-center">
-              <div className="text-soft">Earn Rewards</div>
-              <div className="flex gap-2 items-center">RESO + Fees</div>
-            </div>
-            <div className="flex justify-between items-center">
-              <div className="text-soft">APY</div>
-              <div className="flex gap-2 items-center">{item.apy}%</div>
-            </div>
           </div>
-          <div className="flex justify-between items-center mt-2">
-            <div className="text-soft">Total Staked</div>
-            <div className="flex gap-2 items-center">~${item.totalStake}</div>
+          <div className="flex justify-between items-center">
+            <div className="text-soft">Earn Rewards</div>
+            <div className="flex gap-2 items-center">RESO + Fees</div>
+          </div>
+          <div className="flex justify-between items-center">
+            <div className="text-soft">APY</div>
+            <div className="flex gap-2 items-center">{item.apy}%</div>
           </div>
         </div>
-
-        <div className="bg-primary/5 text-center text-sm flex justify-center items-center  text-primary rounded p-2 gap-2">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            className="w-4 h-4"
-          >
-            <circle cx="12" cy="12" r="10" />
-            <polyline points="12 6 12 12 16.5 12" />
-          </svg>
-          <span>End 25d 12h 10m</span>
+        <div className="flex justify-between items-center mt-2">
+          <div className="text-soft">Total Staked</div>
+          <div className="flex gap-2 items-center">~${item.totalStake}</div>
         </div>
-        <Button
-          type="button"
-          onClick={isConnected ? whileConnected : handleConnected}
-          className="w-full bg-primary font-semibold"
-        >
-          {isConnected ? "Stake" : "Connect Wallet"}
-        </Button>
       </div>
+
+      <div className="bg-primary/5 text-center text-sm flex justify-center items-center  text-primary rounded p-2 gap-2">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          className="w-4 h-4"
+        >
+          <circle cx="12" cy="12" r="10" />
+          <polyline points="12 6 12 12 16.5 12" />
+        </svg>
+        <span>End 25d 12h 10m</span>
+      </div>
+      <Button
+        type="button"
+        onClick={isConnected ? whileConnected : handleConnected}
+        className="w-full bg-primary font-semibold"
+      >
+        {isConnected ? "Stake" : "Connect Wallet"}
+      </Button>
     </div>
   );
 };
