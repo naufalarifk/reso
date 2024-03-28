@@ -78,4 +78,12 @@ export const EN_TRANSLATION = {
   tags: {
     language: "Language",
   },
+  footer: {
+    desc: "Welcome to Reso - your passport to the future of decentralized finance! Trade, swap, stake, and bridge your assets effortlessly with our intuitive platform. Whether you're a seasoned investor or just starting out, Reso makes navigating the world of digital assets a breeze. Say goodbye to complexity and hello to limitless possibilities. Join us today and unlock a new era of financial freedom!",
+    title: {
+      one: "About",
+      two: "Support",
+      three: "FAQ",
+    },
+  },
 };
