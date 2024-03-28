@@ -14,3 +14,8 @@ export * from "./IcSearch";
 export * from "./IcThreeDots";
 export * from "./IcWeb";
 export * from "./IcStar";
+export * from "./IcShape";
+export * from "./IcWave";
+export * from "./IcDiscord";
+export * from "./IcLinkedin";
+export * from "./IcTelegram";

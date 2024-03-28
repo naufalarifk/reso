@@ -128,12 +128,12 @@
     background: linear-gradient(45deg, #f23f5d60, #f23f5d3f);
   }
 
-  .gradient_terms {
+  .gradient_red {
     position: absolute;
     border-radius: 46% 54% 70% 30% / 30% 51% 49% 70%;
     filter: blur(100px);
-    background: #fe9f0066;
-    background: linear-gradient(45deg, #fea10097, #fe9f0066);
+    background: #f23f5d;
+    background: linear-gradient(45deg, #f23f5d60, #f23f5d3f);
   }
 
   .animation-ping {
